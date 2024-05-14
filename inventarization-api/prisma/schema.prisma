@@ -66,15 +66,43 @@ model Employee {
   //
   grade         Grade?
   //
-  skills        String?
-  //
-  workSpace     Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
-  workspaceId   String
+  skills        String?     @db.Text
   //
   departament   Departament @relation(fields: [departamentId], references: [id], onDelete: Cascade)
   departamentId String
+  workspace     Workspace   @relation(fields: [workSpaceId], references: [id], onDelete: Cascade)
+  workSpaceId   String
+  //
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
 
   @@map("employees")
+}
+
+model Workspace {
+  id          String     @id @default(uuid())
+  //
+  employees   Employee[]
+  //
+  monitor     Monitor?   @relation(fields: [monitorId], references: [id], onDelete: Cascade)
+  monitorId   String?
+  desktop     Desktop?   @relation(fields: [desktopId], references: [id], onDelete: Cascade)
+  desktopId   String?
+  laptop      Laptop?    @relation(fields: [laptopId], references: [id], onDelete: Cascade)
+  laptopId    String?
+  mouse       Mouse?     @relation(fields: [mouseId], references: [id], onDelete: Cascade)
+  mouseId     String?
+  mousepad    Mousepad?  @relation(fields: [mousepadId], references: [id], onDelete: Cascade)
+  mousepadId  String?
+  keyboard    Keyboard?  @relation(fields: [keyboardId], references: [id], onDelete: Cascade)
+  keyboardId  String?
+  headphone   Headphone? @relation(fields: [headphoneId], references: [id], onDelete: Cascade)
+  headphoneId String?
+  //
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+
+  @@map("workspaces")
 }
 
 model Brand {
@@ -87,13 +115,14 @@ model Brand {
   rams         Ram[]
   ssds         Ssd[]
   motherboards Motherboard[]
-  case         Case[]
-  //
-  Desktop      Desktop[]
-  Laptop       Laptop[]
-  Monitor      Monitor[]
-  Keyboard     Keyboard[]
-  Mouse        Mouse[]
+  cases        Case[]
+  coolers      Cooler[]
+  laptops      Laptop[]
+  monitors     Monitor[]
+  mouses       Mouse[]
+  mousepads    Mousepad[]
+  keyboards    Keyboard[]
+  headphones   Headphone[]
   //
   createdAt    DateTime      @default(now()) @map("created_at")
   updatedAt    DateTime      @updatedAt @map("updated_at")
@@ -105,21 +134,13 @@ model Cpu {
   id               String    @id @default(uuid())
   //
   desktops         Desktop[]
-  laptops          Laptop[]
-  //
-  model            String
-  manufacturerCode String    @map("manufacturer_code")
-  baseSpeed        Int       @map("base_speed")
-  maxSpeed         Int       @map("max_speed")
-  coreCound        Int       @map("core_cound")
-  threadCound      Int       @map("thread_cound")
-  l2Cache          Int       @map("l2_cache")
-  l3Cache          Int       @map("l3_cache")
-  ramType          String[]  @map("ram_type")
-  maxRam           Int       @map("max_ram")
   //
   brand            Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
   brandId          String
+  //
+  model            String    @unique
+  manufacturerCode String    @unique
+  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -131,18 +152,13 @@ model Gpu {
   id               String    @id @default(uuid())
   //
   desktops         Desktop[]
-  laptops          Laptop[]
-  //
-  model            String
-  manufacturerCode String    @map("manufacturer_code")
-  soket            String
-  baseSpeed        Int       @map("base_speed")
-  maxSpeed         Int       @map("max_speed")
-  memorySize       Int       @map("memory_size")
-  bitBus           Int       @map("bit_bus")
   //
   brand            Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
   brandId          String
+  //
+  model            String    @unique
+  manufacturerCode String    @unique
+  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -154,16 +170,13 @@ model Ram {
   id               String    @id @default(uuid())
   //
   desktops         Desktop[]
-  laptops          Laptop[]
-  //
-  model            String
-  manufacturerCode String    @map("manufacturer_code")
-  ramType          String    @map("ram_type")
-  memorySpeed      Int       @map("memory_speed")
-  memorySize       Int       @map("memory_size")
   //
   brand            Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
   brandId          String
+  //
+  model            String    @unique
+  manufacturerCode String    @unique
+  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -175,16 +188,13 @@ model Ssd {
   id               String    @id @default(uuid())
   //
   desktops         Desktop[]
-  laptops          Laptop[]
-  //
-  model            String
-  manufacturerCode String    @map("manufacturer_code")
-  memorySize       Int       @map("memory_size")
-  readSpeed        Int       @map("read_speed")
-  writeSpeed       Int       @map("write_speed")
   //
   brand            Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
   brandId          String
+  //
+  model            String    @unique
+  manufacturerCode String    @unique
+  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -196,17 +206,13 @@ model Motherboard {
   id               String    @id @default(uuid())
   //
   desktops         Desktop[]
-  laptops          Laptop[]
-  //
-  model            String
-  manufacturerCode String    @map("manufacturer_code")
-  soket            String
-  maxRamSize       Int       @map("max_ram_size")
-  maxRamSpeed      Int       @map("max_ram_speed")
-  motherboardType  String    @map("motherboard_type")
   //
   brand            Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
   brandId          String
+  //
+  model            String    @unique
+  manufacturerCode String    @unique
+  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -218,14 +224,13 @@ model Case {
   id               String    @id @default(uuid())
   //
   desktops         Desktop[]
-  laptops          Laptop[]
-  //
-  model            String
-  manufacturerCode String    @map("manufacturer_code")
-  caseType         String    @map("case_type")
   //
   brand            Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
   brandId          String
+  //
+  model            String    @unique
+  manufacturerCode String    @unique
+  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -233,32 +238,46 @@ model Case {
   @@map("cases")
 }
 
+model Cooler {
+  id               String    @id @default(uuid())
+  //
+  desktops         Desktop[]
+  //
+  brand            Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  brandId          String
+  //
+  model            String    @unique
+  manufacturerCode String    @unique
+  link             String    @unique
+  //
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+
+  @@map("coolers")
+}
+
 model Desktop {
-  id               String      @id @default(uuid())
+  id            String       @id @default(uuid())
   //
-  workspaces       Workspace[]
+  workspaces    Workspace[]
   //
-  model            String?
-  manufacturerCode String?     @map("manufacturer_code")
+  cpu           Cpu          @relation(fields: [cpuId], references: [id], onDelete: Cascade)
+  cpuId         String
+  gpu           Gpu          @relation(fields: [gpuId], references: [id], onDelete: Cascade)
+  gpuId         String
+  ram           Ram?         @relation(fields: [ramId], references: [id], onDelete: Cascade)
+  ramId         String?
+  ssd           Ssd?         @relation(fields: [ssdId], references: [id], onDelete: Cascade)
+  ssdId         String?
+  motherboard   Motherboard? @relation(fields: [motherboardId], references: [id], onDelete: Cascade)
+  motherboardId String?
+  case          Case?        @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  caseId        String?
+  cooler        Cooler?      @relation(fields: [coolerId], references: [id], onDelete: Cascade)
+  coolerId      String?
   //
-  brand            Brand?      @relation(fields: [brandId], references: [id], onDelete: Cascade)
-  brandId          String?
-  //
-  cpu              Cpu         @relation(fields: [cpuId], references: [id], onDelete: Cascade)
-  cpuId            String
-  gpu              Gpu         @relation(fields: [gpuId], references: [id], onDelete: Cascade)
-  gpuId            String
-  ram              Ram         @relation(fields: [ramId], references: [id], onDelete: Cascade)
-  ramId            String
-  ssd              Ssd         @relation(fields: [ssdId], references: [id], onDelete: Cascade)
-  ssdId            String
-  motherboard      Motherboard @relation(fields: [motherboardId], references: [id], onDelete: Cascade)
-  motherboardId    String
-  case             Case        @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  caseId           String
-  //
-  createdAt        DateTime    @default(now()) @map("created_at")
-  updatedAt        DateTime    @updatedAt @map("updated_at")
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
 
   @@map("desktops")
 }
@@ -268,24 +287,12 @@ model Laptop {
   //
   workspaces       Workspace[]
   //
-  model            String
-  manufacturerCode String      @map("manufacturer_code")
+  brand            Brand       @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  brandId          String
   //
-  brand            Brand?      @relation(fields: [brandId], references: [id], onDelete: Cascade)
-  brandId          String?
-  //
-  cpu              Cpu         @relation(fields: [cpuId], references: [id], onDelete: Cascade)
-  cpuId            String
-  gpu              Gpu         @relation(fields: [gpuId], references: [id], onDelete: Cascade)
-  gpuId            String
-  ram              Ram         @relation(fields: [ramId], references: [id], onDelete: Cascade)
-  ramId            String
-  ssd              Ssd         @relation(fields: [ssdId], references: [id], onDelete: Cascade)
-  ssdId            String
-  motherboard      Motherboard @relation(fields: [motherboardId], references: [id], onDelete: Cascade)
-  motherboardId    String
-  case             Case        @relation(fields: [caseId], references: [id], onDelete: Cascade)
-  caseId           String
+  model            String      @unique
+  manufacturerCode String      @unique
+  link             String      @unique
   //
   createdAt        DateTime    @default(now()) @map("created_at")
   updatedAt        DateTime    @updatedAt @map("updated_at")
@@ -298,14 +305,12 @@ model Monitor {
   //
   workspaces       Workspace[]
   //
-  model            String
-  manufacturerCode String      @map("manufacturer_code")
-  maxDispensing    String      @map("max_dispensing")
-  diagonal         Int
-  refreshRate      Int         @map("refresh_rate")
-  //
   brand            Brand       @relation(fields: [brandId], references: [id], onDelete: Cascade)
   brandId          String
+  //
+  model            String      @unique
+  manufacturerCode String      @unique
+  link             String      @unique
   //
   createdAt        DateTime    @default(now()) @map("created_at")
   updatedAt        DateTime    @updatedAt @map("updated_at")
@@ -313,39 +318,17 @@ model Monitor {
   @@map("monitors")
 }
 
-model Keyboard {
-  id               String      @id @default(uuid())
-  //
-  workspaces       Workspace[]
-  //
-  model            String
-  manufacturerCode String      @map("manufacturer_code")
-  keyboardType     String      @map("keyboard_type")
-  keycapProfile    String      @map("keycap_profile")
-  keycapCound      Int         @map("keycap_count")
-  switch           String
-  //
-  brand            Brand       @relation(fields: [brandId], references: [id], onDelete: Cascade)
-  brandId          String
-  //
-  createdAt        DateTime    @default(now()) @map("created_at")
-  updatedAt        DateTime    @updatedAt @map("updated_at")
-
-  @@map("keyboards")
-}
-
 model Mouse {
   id               String      @id @default(uuid())
   //
   workspaces       Workspace[]
   //
-  model            String
-  manufacturerCode String      @map("manufacturer_code")
-  rate             Int
-  maxResolution    Int         @map("max_resolution")
-  //
   brand            Brand       @relation(fields: [brandId], references: [id], onDelete: Cascade)
   brandId          String
+  //
+  model            String      @unique
+  manufacturerCode String      @unique
+  link             String      @unique
   //
   createdAt        DateTime    @default(now()) @map("created_at")
   updatedAt        DateTime    @updatedAt @map("updated_at")
@@ -353,24 +336,56 @@ model Mouse {
   @@map("mouses")
 }
 
-model Workspace {
-  id         String     @id @default(uuid())
+model Mousepad {
+  id               String      @id @default(uuid())
   //
-  employees  Employee[]
+  workspaces       Workspace[]
   //
-  desktop    Desktop?   @relation(fields: [desktopId], references: [id], onDelete: Cascade)
-  desktopId  String?
-  laptop     Laptop?    @relation(fields: [laptopId], references: [id], onDelete: Cascade)
-  laptopId   String?
-  keyboard   Keyboard   @relation(fields: [keyboardId], references: [id], onDelete: Cascade)
-  keyboardId String
-  mouse      Mouse      @relation(fields: [mouseId], references: [id], onDelete: Cascade)
-  mouseId    String
-  monitor    Monitor    @relation(fields: [monitorId], references: [id], onDelete: Cascade)
-  monitorId  String
+  brand            Brand       @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  brandId          String
   //
-  createdAt  DateTime   @default(now()) @map("created_at")
-  updatedAt  DateTime   @updatedAt @map("updated_at")
+  model            String      @unique
+  manufacturerCode String      @unique
+  link             String      @unique
+  //
+  createdAt        DateTime    @default(now()) @map("created_at")
+  updatedAt        DateTime    @updatedAt @map("updated_at")
 
-  @@map("workspaces")
+  @@map("mousepads")
+}
+
+model Keyboard {
+  id               String      @id @default(uuid())
+  //
+  workspaces       Workspace[]
+  //
+  brand            Brand       @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  brandId          String
+  //
+  model            String      @unique
+  manufacturerCode String      @unique
+  link             String      @unique
+  //
+  createdAt        DateTime    @default(now()) @map("created_at")
+  updatedAt        DateTime    @updatedAt @map("updated_at")
+
+  @@map("keyboards")
+}
+
+model Headphone {
+  id               String      @id @default(uuid())
+  //
+  workspaces       Workspace[]
+  //
+  brand            Brand       @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  brandId          String
+  //
+  model            String      @unique
+  manufacturerCode String      @unique
+  link             String      @unique
+  //
+  createdAt        DateTime    @default(now()) @map("created_at")
+  updatedAt        DateTime    @updatedAt @map("updated_at")
+
+  @@map("headphones")
 }
