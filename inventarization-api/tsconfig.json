@@ -18,12 +18,11 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app": [
-        "./src/app.module.ts"
-      ],
-      "@app/shared/*": [
-        "libs/shared/src/*"
-      ]
+      "@app": ["./src/app.module.ts"],
+      "@app/shared/*": ["libs/shared/src/*"],
+      //
+      "@auth/*": ["./src/auth/*"],
+      "@user/*": ["./src/user/*"]
     }
   }
 }

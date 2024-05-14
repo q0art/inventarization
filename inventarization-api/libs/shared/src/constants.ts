@@ -1,5 +1,4 @@
-export const IS_PUBLIC_RESOURCE_KEY = "public";
-export const FOR_ROLE_KEY = "roles";
+export const IS_PUBLIC_RESOURCE_KEY = "is_public_resource";
 
 export const EMAIL_MIN_LENGTH = 6;
 export const EMAIL_MAX_LENGTH = 254;
