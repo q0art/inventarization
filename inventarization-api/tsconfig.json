@@ -20,6 +20,7 @@
     "paths": {
       "@app": ["./src/app.module.ts"],
       "@app/shared/*": ["libs/shared/src/*"],
+      "@prisma/*": ["./src/prisma/*"],
       //
       "@auth/*": ["./src/auth/*"],
       "@user/*": ["./src/user/*"]
