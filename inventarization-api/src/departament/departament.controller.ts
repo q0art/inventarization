@@ -29,7 +29,7 @@ export class DepartamentController {
     if (!departamentById)
       throw new BadRequestException(`departament not found by id: ${id}`);
 
-    return await this.departamentService.getById(id);
+    return departamentById;
   }
 
   @Post("")

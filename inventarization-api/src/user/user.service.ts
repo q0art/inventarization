@@ -1,3 +1,4 @@
+import { JwtPayload } from "@app/shared/types";
 import {
   BadRequestException,
   ForbiddenException,
@@ -6,9 +7,8 @@ import {
 } from "@nestjs/common";
 import { User } from "@prisma/client";
 import { PrismaService } from "@prisma/prisma.service";
-import { CreateUserDto } from "./dtos";
+import { CreateUserDto } from "@user/dtos";
 import { hash } from "bcryptjs";
-import { JwtPayload } from "@app/shared/types";
 
 @Injectable()
 export class UserService {
@@ -45,6 +45,7 @@ export class UserService {
   async create(dto: CreateUserDto) {
     const { email, password } = dto;
     const passwordHash = await this.hashPassword(password);
+
     const user: User = await this.prismaService.user
       .create({
         data: { email, passwordHash },

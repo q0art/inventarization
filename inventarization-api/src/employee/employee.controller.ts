@@ -29,7 +29,7 @@ export class EmployeeController {
     if (!employeeById)
       throw new BadRequestException(`employee not found by id: ${id}`);
 
-    return await this.employeeService.getById(id);
+    return employeeById;
   }
 
   @Post("")

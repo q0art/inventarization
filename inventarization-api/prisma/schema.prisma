@@ -45,7 +45,7 @@ enum Grade {
 model Departament {
   id        String     @id @default(uuid())
   //
-  name      String
+  name      String     @unique
   //
   employees Employee[]
   //
@@ -59,8 +59,9 @@ model Employee {
   id            String      @id @default(uuid())
   //
   firstName     String      @map("first_name")
-  lastName      String?     @map("last_name")
-  middleName    String?     @map("middle_name")
+  lastName      String      @map("last_name")
+  middleName    String      @map("middle_name")
+  email         String      @unique
   //
   dateOfBirth   DateTime    @map("date_of_birth")
   //
@@ -70,8 +71,8 @@ model Employee {
   //
   departament   Departament @relation(fields: [departamentId], references: [id], onDelete: Cascade)
   departamentId String
-  workspace     Workspace   @relation(fields: [workSpaceId], references: [id], onDelete: Cascade)
-  workSpaceId   String
+  workspace     Workspace   @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  workspaceId   String
   //
   createdAt     DateTime    @default(now()) @map("created_at")
   updatedAt     DateTime    @updatedAt @map("updated_at")

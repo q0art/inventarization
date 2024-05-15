@@ -23,7 +23,10 @@
       "@prisma/*": ["./src/prisma/*"],
       //
       "@auth/*": ["./src/auth/*"],
-      "@user/*": ["./src/user/*"]
+      "@user/*": ["./src/user/*"],
+      "@employee/*": ["./src/employee/*"],
+      "@departament/*": ["./src/departament/*"],
+      "@workspace/*": ["./src/workspace/*"]
     }
   }
 }

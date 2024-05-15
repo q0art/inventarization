@@ -12,7 +12,7 @@ import {
   MinLength,
 } from "class-validator";
 
-export class SignUnDto {
+export class SignUpDto {
   @IsEmail()
   @IsNotEmpty()
   @MinLength(EMAIL_MIN_LENGTH, {
