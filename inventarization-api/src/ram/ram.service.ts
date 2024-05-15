@@ -1,4 +1,112 @@
-import { Injectable } from '@nestjs/common';
+import { CreateItemDto, UpdateItemDto } from "@app/shared/types";
+import { Injectable, Logger } from "@nestjs/common";
+import { Ram } from "@prisma/client";
+import { PrismaService } from "@prisma/prisma.service";
 
 @Injectable()
-export class RamService {}
+export class RamService {
+  private logger = new Logger(RamService.name);
+
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async getAllByModel(model: string) {
+    const rams: Ram[] = await this.prismaService.ram
+      .findMany({
+        where: {
+          model: {
+            contains: model,
+            mode: "insensitive",
+          },
+        },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return [];
+      });
+
+    return rams;
+  }
+
+  async getById(id: string) {
+    const ram: Ram = await this.prismaService.ram
+      .findUnique({
+        where: { id },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return ram;
+  }
+
+  async getByModel(model: string) {
+    const ram: Ram = await this.prismaService.ram
+      .findUnique({
+        where: { model },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return ram;
+  }
+
+  async getByManufacturerCode(manufacturerCode: string) {
+    const ram: Ram = await this.prismaService.ram
+      .findUnique({
+        where: { manufacturerCode },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return ram;
+  }
+
+  async create(dto: CreateItemDto) {
+    const ram: Ram = await this.prismaService.ram
+      .create({
+        data: {
+          ...dto,
+        },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return ram;
+  }
+
+  async update(id: string, dto: UpdateItemDto) {
+    const ram: Ram = await this.prismaService.ram
+      .update({
+        where: { id },
+        data: {
+          ...dto,
+        },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return ram;
+  }
+
+  async delete(id: string) {
+    const ram: Ram = await this.prismaService.ram
+      .delete({
+        where: { id },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return ram;
+  }
+}
