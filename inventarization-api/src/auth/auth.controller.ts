@@ -19,39 +19,17 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post("sign-in")
-  async signIn(
-    @Body() dto: SignInDto,
-    @Res() response: Response,
-    @UserAgent() userAgent: string,
-  ) {
-    const { refreshToken, accessToken } = await this.authService.signIn(
-      dto,
-      userAgent,
-    );
+  async signIn(@Body() dto: SignInDto, @Res() response: Response, @UserAgent() userAgent: string) {
+    const { refreshToken, accessToken } = await this.authService.signIn(dto, userAgent);
 
-    await this.authService.setRefreshTokenToCookies(
-      refreshToken,
-      accessToken,
-      response,
-    );
+    await this.authService.setRefreshTokenToCookies(refreshToken, accessToken, response);
   }
 
   @Post("sign-up")
-  async signUp(
-    @Body() dto: SignUpDto,
-    @Res() response: Response,
-    @UserAgent() userAgent: string,
-  ) {
-    const { refreshToken, accessToken } = await this.authService.signUp(
-      dto,
-      userAgent,
-    );
+  async signUp(@Body() dto: SignUpDto, @Res() response: Response, @UserAgent() userAgent: string) {
+    const { refreshToken, accessToken } = await this.authService.signUp(dto, userAgent);
 
-    await this.authService.setRefreshTokenToCookies(
-      refreshToken,
-      accessToken,
-      response,
-    );
+    await this.authService.setRefreshTokenToCookies(refreshToken, accessToken, response);
   }
 
   @Post("sign-out")
@@ -59,11 +37,7 @@ export class AuthController {
     @Cookies(AuthService.refreshTokenKey) refreshToken: string,
     @Res() response: Response,
   ) {
-    if (refreshToken)
-      await this.authService.removeRefreshTokenToCookies(
-        refreshToken,
-        response,
-      );
+    if (refreshToken) await this.authService.removeRefreshTokenToCookies(refreshToken, response);
 
     response.sendStatus(HttpStatus.OK);
   }
@@ -74,8 +48,7 @@ export class AuthController {
     @Res() response: Response,
     @UserAgent() userAgent: string,
   ) {
-    if (!_refreshToken)
-      throw new UnauthorizedException("refresh token dont exist");
+    if (!_refreshToken) throw new UnauthorizedException("refresh token dont exist");
 
     const { accessToken, refreshToken } = await this.authService.updateTokens(
       _refreshToken,
@@ -85,10 +58,6 @@ export class AuthController {
     if (!accessToken || !refreshToken)
       throw new UnauthorizedException(`access and refresh tokens dont'exist`);
 
-    await this.authService.setRefreshTokenToCookies(
-      refreshToken,
-      accessToken,
-      response,
-    );
+    await this.authService.setRefreshTokenToCookies(refreshToken, accessToken, response);
   }
 }

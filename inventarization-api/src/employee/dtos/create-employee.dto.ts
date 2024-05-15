@@ -9,7 +9,6 @@ import {
 import { Grade } from "@prisma/client";
 import {
   IsDateString,
-  IsEmail,
   IsNotEmpty,
   IsOptional,
   IsString,
@@ -18,7 +17,7 @@ import {
 } from "class-validator";
 
 export class CreateEmployeeDto {
-  @IsEmail()
+  @IsString()
   @IsNotEmpty()
   @MinLength(SMALL_FIELD_MIN_LENGTH, {
     message: `employee first name min length is ${SMALL_FIELD_MIN_LENGTH}`,
@@ -28,7 +27,7 @@ export class CreateEmployeeDto {
   })
   firstName: string;
 
-  @IsEmail()
+  @IsString()
   @IsNotEmpty()
   @MinLength(SMALL_FIELD_MIN_LENGTH, {
     message: `employee last name min length is ${SMALL_FIELD_MIN_LENGTH}`,
@@ -38,7 +37,7 @@ export class CreateEmployeeDto {
   })
   lastName: string;
 
-  @IsEmail()
+  @IsString()
   @IsNotEmpty()
   @MinLength(SMALL_FIELD_MIN_LENGTH, {
     message: `employee middle name min length is ${SMALL_FIELD_MIN_LENGTH}`,
@@ -48,7 +47,7 @@ export class CreateEmployeeDto {
   })
   middleName: string;
 
-  @IsEmail()
+  @IsString()
   @IsNotEmpty()
   @MinLength(EMAIL_MIN_LENGTH, {
     message: `employee email min length is ${EMAIL_MIN_LENGTH}`,

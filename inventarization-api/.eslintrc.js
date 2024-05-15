@@ -3,7 +3,7 @@ module.exports = {
   parserOptions: {
     project: "tsconfig.json",
     tsconfigRootDir: __dirname,
-    sourceType: "module"
+    sourceType: "module",
   },
   plugins: ["simple-import-sort"],
   extends: ["plugin:prettier/recommended"],
@@ -14,6 +14,6 @@ module.exports = {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     //
-    "prettier/prettier": ["error", { endOfLine: "auto" }]
-  }
+    "prettier/prettier": ["error", { endOfLine: "auto" }],
+  },
 };

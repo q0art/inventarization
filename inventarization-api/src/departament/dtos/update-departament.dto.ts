@@ -1,7 +1,4 @@
-import {
-  SMALL_FIELD_MAX_LENGTH,
-  SMALL_FIELD_MIN_LENGTH,
-} from "@app/shared/constants";
+import { SMALL_FIELD_MAX_LENGTH, SMALL_FIELD_MIN_LENGTH } from "@app/shared/constants";
 import { IsEmail, IsNotEmpty, MaxLength, MinLength } from "class-validator";
 
 export class UpdateDepartamentDto {

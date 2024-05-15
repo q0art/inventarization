@@ -1,10 +1,5 @@
 import { JwtPayload } from "@app/shared/types";
-import {
-  BadRequestException,
-  ForbiddenException,
-  Injectable,
-  Logger,
-} from "@nestjs/common";
+import { BadRequestException, ForbiddenException, Injectable, Logger } from "@nestjs/common";
 import { User } from "@prisma/client";
 import { PrismaService } from "@prisma/prisma.service";
 import { CreateUserDto } from "@user/dtos";
@@ -59,8 +54,7 @@ export class UserService {
   }
 
   async delete(id: string, jwtPayload: JwtPayload) {
-    if (jwtPayload.id !== id)
-      throw new ForbiddenException("u can delete only yourself");
+    if (jwtPayload.id !== id) throw new ForbiddenException("u can delete only yourself");
 
     const userById = await this.getById(id);
 

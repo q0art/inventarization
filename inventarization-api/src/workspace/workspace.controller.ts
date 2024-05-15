@@ -24,8 +24,7 @@ export class WorkspaceController {
   async getById(@Param("id") id: string) {
     const workspaceById = await this.workspaceService.getById(id);
 
-    if (!workspaceById)
-      throw new BadRequestException(`workspace not found by id: ${id}`);
+    if (!workspaceById) throw new BadRequestException(`workspace not found by id: ${id}`);
 
     return workspaceById;
   }
@@ -39,8 +38,7 @@ export class WorkspaceController {
   async update(@Param("id") id: string, dto: UpdateWorkspaceDto) {
     const workspaceById = await this.workspaceService.getById(id);
 
-    if (!workspaceById)
-      throw new BadRequestException(`workspace not found by id: ${id}`);
+    if (!workspaceById) throw new BadRequestException(`workspace not found by id: ${id}`);
 
     return await this.workspaceService.update(id, dto);
   }
@@ -49,8 +47,7 @@ export class WorkspaceController {
   async delete(@Param("id") id: string) {
     const workspaceById = await this.workspaceService.getById(id);
 
-    if (!workspaceById)
-      throw new BadRequestException(`workspace not found by id: ${id}`);
+    if (!workspaceById) throw new BadRequestException(`workspace not found by id: ${id}`);
 
     return await this.workspaceService.delete(id);
   }

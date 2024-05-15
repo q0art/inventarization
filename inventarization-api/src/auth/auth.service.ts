@@ -1,11 +1,6 @@
 import { JwtPayload } from "@app/shared/types";
 import { SignInDto, SignUpDto } from "@auth/dtos";
-import {
-  BadRequestException,
-  HttpStatus,
-  Injectable,
-  UnauthorizedException,
-} from "@nestjs/common";
+import { BadRequestException, HttpStatus, Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { Token } from "@prisma/client";
 import { PrismaService } from "@prisma/prisma.service";
@@ -30,8 +25,7 @@ export class AuthService {
     const userByEmail = await this.userService.getByEmail(email);
     const compared = await compare(password, userByEmail.passwordHash);
 
-    if (!userByEmail || !compared)
-      throw new BadRequestException("invalid fields");
+    if (!userByEmail || !compared) throw new BadRequestException("invalid fields");
 
     const jwtPayload: JwtPayload = {
       id: userByEmail.id,
@@ -45,8 +39,7 @@ export class AuthService {
     const { email } = dto;
     const userByEmail = await this.userService.getByEmail(email);
 
-    if (userByEmail)
-      throw new BadRequestException(`user already exist with email: ${email}`);
+    if (userByEmail) throw new BadRequestException(`user already exist with email: ${email}`);
 
     const user = await this.userService.create(dto);
 
@@ -59,13 +52,11 @@ export class AuthService {
   }
 
   async updateTokens(_refreshToken: string, userAgent: string) {
-    const { refreshToken, expiredAt, userId } =
-      await this.prismaService.token.findUnique({
-        where: { refreshToken: _refreshToken },
-      });
+    const { refreshToken, expiredAt, userId } = await this.prismaService.token.findUnique({
+      where: { refreshToken: _refreshToken },
+    });
 
-    if (!refreshToken)
-      throw new UnauthorizedException("refresh token dont exist");
+    if (!refreshToken) throw new UnauthorizedException("refresh token dont exist");
 
     await this.deleteRefreshToken(refreshToken);
 
@@ -74,19 +65,12 @@ export class AuthService {
 
     const user = await this.userService.getById(userId);
 
-    if (!user)
-      throw new UnauthorizedException(
-        `refresh token has invalid userId: ${userId}`,
-      );
+    if (!user) throw new UnauthorizedException(`refresh token has invalid userId: ${userId}`);
 
     return this.createTokens(user, userAgent);
   }
 
-  async setRefreshTokenToCookies(
-    _refreshToken: Token,
-    accessToken: string,
-    response: Response,
-  ) {
+  async setRefreshTokenToCookies(_refreshToken: Token, accessToken: string, response: Response) {
     const { refreshToken, expiredAt } = _refreshToken;
     const expires = new Date(expiredAt);
 

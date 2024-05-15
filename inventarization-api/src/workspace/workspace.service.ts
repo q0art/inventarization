@@ -10,12 +10,10 @@ export class WorkspaceService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async getAll() {
-    const workspaces: Workspace[] = await this.prismaService.workspace
-      .findMany()
-      .catch((error) => {
-        this.logger.error(error);
-        return [];
-      });
+    const workspaces: Workspace[] = await this.prismaService.workspace.findMany().catch((error) => {
+      this.logger.error(error);
+      return [];
+    });
 
     return workspaces;
   }

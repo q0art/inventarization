@@ -26,8 +26,7 @@ export class DepartamentController {
   async getById(@Param("id") id: string) {
     const departamentById = await this.departamentService.getById(id);
 
-    if (!departamentById)
-      throw new BadRequestException(`departament not found by id: ${id}`);
+    if (!departamentById) throw new BadRequestException(`departament not found by id: ${id}`);
 
     return departamentById;
   }
@@ -38,9 +37,7 @@ export class DepartamentController {
     const departamentByName = await this.departamentService.getByName(name);
 
     if (departamentByName)
-      throw new ConflictException(
-        `departamnet already exist with name: ${name}`,
-      );
+      throw new ConflictException(`departamnet already exist with name: ${name}`);
 
     return await this.departamentService.create(dto);
   }
@@ -49,16 +46,13 @@ export class DepartamentController {
   async update(@Param("id") id: string, @Body() dto: UpdateDepartamentDto) {
     const departamentById = await this.departamentService.getById(id);
 
-    if (!departamentById)
-      throw new BadRequestException(`departament not found by id: ${id}`);
+    if (!departamentById) throw new BadRequestException(`departament not found by id: ${id}`);
 
     const { name } = dto;
     const departamentByName = await this.departamentService.getByName(name);
 
     if (departamentByName)
-      throw new ConflictException(
-        `departamnet already exist with name: ${name}`,
-      );
+      throw new ConflictException(`departamnet already exist with name: ${name}`);
 
     return await this.departamentService.update(id, dto);
   }
@@ -67,8 +61,7 @@ export class DepartamentController {
   async delete(@Param("id") id: string) {
     const departamentById = await this.departamentService.getById(id);
 
-    if (!departamentById)
-      throw new BadRequestException(`departament not found by id: ${id}`);
+    if (!departamentById) throw new BadRequestException(`departament not found by id: ${id}`);
 
     return await this.departamentService.delete(id);
   }

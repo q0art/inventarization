@@ -26,7 +26,12 @@
       "@user/*": ["./src/user/*"],
       "@employee/*": ["./src/employee/*"],
       "@departament/*": ["./src/departament/*"],
-      "@workspace/*": ["./src/workspace/*"]
+      "@workspace/*": ["./src/workspace/*"],
+      "@brand/*": ["./src/brand/*"],
+      "@cpu/*": ["./src/cpu/*"],
+      "@gpu/*": ["./src/gpu/*"],
+      "@ram/*": ["./src/ram/*"],
+      "@ssd/*": ["./src/ssd/*"]
     }
   }
 }

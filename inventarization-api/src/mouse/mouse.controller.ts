@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { MouseService } from './mouse.service';
+import { Controller } from "@nestjs/common";
+import { MouseService } from "./mouse.service";
 
-@Controller('mouse')
+@Controller("mouse")
 export class MouseController {
   constructor(private readonly mouseService: MouseService) {}
 }

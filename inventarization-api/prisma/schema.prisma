@@ -141,7 +141,6 @@ model Cpu {
   //
   model            String    @unique
   manufacturerCode String    @unique
-  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -159,7 +158,6 @@ model Gpu {
   //
   model            String    @unique
   manufacturerCode String    @unique
-  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -177,7 +175,6 @@ model Ram {
   //
   model            String    @unique
   manufacturerCode String    @unique
-  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -195,7 +192,6 @@ model Ssd {
   //
   model            String    @unique
   manufacturerCode String    @unique
-  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -213,7 +209,6 @@ model Motherboard {
   //
   model            String    @unique
   manufacturerCode String    @unique
-  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -231,7 +226,6 @@ model Case {
   //
   model            String    @unique
   manufacturerCode String    @unique
-  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -249,7 +243,6 @@ model Cooler {
   //
   model            String    @unique
   manufacturerCode String    @unique
-  link             String    @unique
   //
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
@@ -293,7 +286,6 @@ model Laptop {
   //
   model            String      @unique
   manufacturerCode String      @unique
-  link             String      @unique
   //
   createdAt        DateTime    @default(now()) @map("created_at")
   updatedAt        DateTime    @updatedAt @map("updated_at")
@@ -311,7 +303,6 @@ model Monitor {
   //
   model            String      @unique
   manufacturerCode String      @unique
-  link             String      @unique
   //
   createdAt        DateTime    @default(now()) @map("created_at")
   updatedAt        DateTime    @updatedAt @map("updated_at")
@@ -329,7 +320,6 @@ model Mouse {
   //
   model            String      @unique
   manufacturerCode String      @unique
-  link             String      @unique
   //
   createdAt        DateTime    @default(now()) @map("created_at")
   updatedAt        DateTime    @updatedAt @map("updated_at")
@@ -347,7 +337,6 @@ model Mousepad {
   //
   model            String      @unique
   manufacturerCode String      @unique
-  link             String      @unique
   //
   createdAt        DateTime    @default(now()) @map("created_at")
   updatedAt        DateTime    @updatedAt @map("updated_at")
@@ -365,7 +354,6 @@ model Keyboard {
   //
   model            String      @unique
   manufacturerCode String      @unique
-  link             String      @unique
   //
   createdAt        DateTime    @default(now()) @map("created_at")
   updatedAt        DateTime    @updatedAt @map("updated_at")
@@ -383,7 +371,6 @@ model Headphone {
   //
   model            String      @unique
   manufacturerCode String      @unique
-  link             String      @unique
   //
   createdAt        DateTime    @default(now()) @map("created_at")
   updatedAt        DateTime    @updatedAt @map("updated_at")

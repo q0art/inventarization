@@ -1,7 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { CaseService } from './case.service';
+import { Controller } from "@nestjs/common";
+import { CaseService } from "./case.service";
 
-@Controller('case')
+@Controller("case")
 export class CaseController {
   constructor(private readonly caseService: CaseService) {}
 }

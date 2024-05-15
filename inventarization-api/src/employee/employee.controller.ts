@@ -26,8 +26,7 @@ export class EmployeeController {
   async getById(@Param("id") id: string) {
     const employeeById = await this.getById(id);
 
-    if (!employeeById)
-      throw new BadRequestException(`employee not found by id: ${id}`);
+    if (!employeeById) throw new BadRequestException(`employee not found by id: ${id}`);
 
     return employeeById;
   }
@@ -38,10 +37,7 @@ export class EmployeeController {
 
     const employeeByEmail = this.employeeService.getByEmail(email);
 
-    if (employeeByEmail)
-      throw new ConflictException(
-        `employee already exist with email: ${email}`,
-      );
+    if (employeeByEmail) throw new ConflictException(`employee already exist with email: ${email}`);
 
     return await this.employeeService.create(dto);
   }
@@ -50,16 +46,13 @@ export class EmployeeController {
   async update(@Param("id") id: string, @Body() dto: UpdateEmployeeDto) {
     const employeeById = await this.getById(id);
 
-    if (!employeeById)
-      throw new BadRequestException(`user not found by id: ${id}`);
+    if (!employeeById) throw new BadRequestException(`user not found by id: ${id}`);
 
     const { email } = dto;
     const employeeByEmail = await this.employeeService.getByEmail(email);
 
     if (employeeByEmail && employeeByEmail.email !== email)
-      throw new ConflictException(
-        `employee already exist with email: ${email}`,
-      );
+      throw new ConflictException(`employee already exist with email: ${email}`);
 
     return await this.employeeService.update(id, dto);
   }
@@ -68,8 +61,7 @@ export class EmployeeController {
   async delete(@Param("id") id: string) {
     const employeeById = await this.employeeService.getById(id);
 
-    if (!employeeById)
-      throw new BadRequestException(`employee not found by id: ${id}`);
+    if (!employeeById) throw new BadRequestException(`employee not found by id: ${id}`);
 
     return await this.employeeService.delete(id);
   }
