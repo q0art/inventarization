@@ -1,4 +1,112 @@
-import { Injectable } from '@nestjs/common';
+import { CreateItemDto, UpdateItemDto } from "@app/shared/types";
+import { Injectable, Logger } from "@nestjs/common";
+import { Gpu } from "@prisma/client";
+import { PrismaService } from "@prisma/prisma.service";
 
 @Injectable()
-export class GpuService {}
+export class GpuService {
+  private logger = new Logger(GpuService.name);
+
+  constructor(private readonly prismaService: PrismaService) {}
+
+  async getAllByModel(model: string) {
+    const gpus: Gpu[] = await this.prismaService.gpu
+      .findMany({
+        where: {
+          model: {
+            contains: model,
+            mode: "insensitive",
+          },
+        },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return [];
+      });
+
+    return gpus;
+  }
+
+  async getById(id: string) {
+    const gpu: Gpu = await this.prismaService.gpu
+      .findUnique({
+        where: { id },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return gpu;
+  }
+
+  async getByModel(model: string) {
+    const gpu: Gpu = await this.prismaService.gpu
+      .findUnique({
+        where: { model },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return gpu;
+  }
+
+  async getByManufacturerCode(manufacturerCode: string) {
+    const gpu: Gpu = await this.prismaService.gpu
+      .findUnique({
+        where: { manufacturerCode },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return gpu;
+  }
+
+  async create(dto: CreateItemDto) {
+    const gpu: Gpu = await this.prismaService.gpu
+      .create({
+        data: {
+          ...dto,
+        },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return gpu;
+  }
+
+  async update(id: string, dto: UpdateItemDto) {
+    const gpu: Gpu = await this.prismaService.gpu
+      .update({
+        where: { id },
+        data: {
+          ...dto,
+        },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return gpu;
+  }
+
+  async delete(id: string) {
+    const gpu: Gpu = await this.prismaService.gpu
+      .delete({
+        where: { id },
+      })
+      .catch((error) => {
+        this.logger.error(error);
+        return null;
+      });
+
+    return gpu;
+  }
+}
