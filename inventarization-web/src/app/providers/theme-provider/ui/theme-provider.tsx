@@ -19,7 +19,7 @@ const ThemeProvider: FC<Props> = ({ theme, children }) => {
       return;
     }
 
-    if (_theme === "light")
+    if (_theme === "dark")
       window.document.documentElement.classList.add("dark");
     else window.document.documentElement.classList.remove("dark");
   }, [theme, _theme]);

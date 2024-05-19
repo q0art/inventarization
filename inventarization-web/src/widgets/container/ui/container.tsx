@@ -3,11 +3,11 @@ import { FC, ReactNode } from "react";
 import { cn } from "@/shared/lib/cn.ts";
 
 interface Props {
-  className?: string;
   children?: ReactNode;
+  className?: string;
 }
 
-const Container: FC<Props> = ({ className, children }) => {
+const Container: FC<Props> = ({ children, className }) => {
   return (
     <div
       className={cn(

@@ -6,7 +6,11 @@ import { FaMoon, FaSun } from "react-icons/fa6";
 import { cn } from "@/shared/lib/cn.ts";
 import { buttonVariants } from "@/shared/ui/button.tsx";
 
-const ThemeToggle: FC = () => {
+interface Props {
+  className?: string;
+}
+
+const ThemeToggle: FC<Props> = ({ className }) => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
 
@@ -24,7 +28,8 @@ const ThemeToggle: FC = () => {
           variant: "ghost",
           size: "icon",
         }),
-        "p-2 delay-75 active:scale-90",
+        "p-3",
+        className,
       )}
     />
   ) : (
@@ -35,7 +40,8 @@ const ThemeToggle: FC = () => {
           variant: "ghost",
           size: "icon",
         }),
-        "p-2 delay-75 active:scale-90",
+        "p-3",
+        className,
       )}
     />
   );

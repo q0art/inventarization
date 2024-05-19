@@ -19,7 +19,7 @@ const NotFoundPage: FC = () => {
           <CardTitle>oops page not found 😢</CardTitle>
         </CardHeader>
         <CardContent>
-          <Button onClick={onClick} variant={"link"} className="text-xl">
+          <Button onClick={onClick} variant={"link"}>
             back
           </Button>
         </CardContent>
