@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-import { Container } from "@/widgets/container";
 import { cn } from "@/shared/lib/cn.ts";
+import { Container } from "@/widgets/container";
 
 interface Props {
   className?: string;

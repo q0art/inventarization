@@ -1,6 +1,7 @@
 import { FC, ReactNode } from "react";
+import { Location, Navigate, useLocation } from "react-router-dom";
+
 import { useAuth } from "@/shared/hooks/use-auth.ts";
-import { Navigate, useLocation, Location } from "react-router-dom";
 import { RouterState } from "@/shared/types/router-state.ts";
 
 interface Props {

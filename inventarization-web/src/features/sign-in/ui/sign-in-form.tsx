@@ -1,12 +1,13 @@
-import { FC, useState } from "react";
-import { Location, useLocation, useNavigate } from "react-router-dom";
-import { RouterState } from "@/shared/types/router-state";
-import { setAuth, useSignInMutation } from "@/entities/auth";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signInSchema } from "@/features/sign-in/model/sign-in-schema.ts";
+import { FC, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Location, useLocation, useNavigate } from "react-router-dom";
 import { z } from "zod";
+
+import { setAuth, useSignInMutation } from "@/entities/auth";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
+import { RouterState } from "@/shared/types/router-state";
+import { Button } from "@/shared/ui/button.tsx";
 import {
   Form,
   FormControl,
@@ -15,15 +16,16 @@ import {
   FormMessage,
 } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
-import { Button } from "@/shared/ui/button.tsx";
 import { PasswordToggle } from "@/widgets/password-toggle";
+
+import { signInSchema } from "./../model/sign-in-schema";
 
 const SignInForm: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { state }: Location<RouterState> = useLocation();
 
-  const [signIn] = useSignInMutation();
+  const [signIn, { isError, error }] = useSignInMutation();
   const [isOpen, setIsOpen] = useState(false);
 
   const form = useForm({
@@ -35,9 +37,8 @@ const SignInForm: FC = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof signInSchema>) => {
-    console.log({ ...values });
-
-    const { accessToken } = await signIn(values).unwrap();
+    const { email, password } = values;
+    const { accessToken } = await signIn({ email, password }).unwrap();
 
     if (accessToken) {
       dispatch(setAuth({ accessToken }));
@@ -45,6 +46,7 @@ const SignInForm: FC = () => {
     }
   };
 
+  // @ts-ignore
   return (
     <Form {...form}>
       <form
@@ -68,7 +70,6 @@ const SignInForm: FC = () => {
             </FormItem>
           )}
         />
-
         <FormField
           control={form.control}
           name="password"
@@ -92,6 +93,13 @@ const SignInForm: FC = () => {
             </FormItem>
           )}
         />
+
+        {isError && (
+          <div className="rounded-md border-[1px] border-neutral-500 bg-red-500 px-5 py-3 text-center">
+            {/*@ts-expect-error*/}
+            <span className="text-neutral-100">{error?.data.message}</span>
+          </div>
+        )}
 
         <Button type="submit">sign in</Button>
       </form>

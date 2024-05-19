@@ -1,9 +1,12 @@
 import { FC } from "react";
-import { Button } from "@/shared/ui/button";
 import { FaXmark } from "react-icons/fa6";
+import { FaCircleUser } from "react-icons/fa6";
+import { Link, useNavigate } from "react-router-dom";
+
+import { SignOut } from "@/features/sign-out";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch.ts";
-import { toggleSidebar } from "@/widgets/sidebar";
 import { useOnClickOutside } from "@/shared/hooks/use-click-outside.ts";
+import { Button } from "@/shared/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -12,8 +15,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/shared/ui/command";
-import { Link, useNavigate } from "react-router-dom";
-import { FaCircleUser } from "react-icons/fa6";
+import { toggleSidebar } from "@/widgets/sidebar";
 
 interface Props {
   commands: { name: string; link: string }[];
@@ -38,7 +40,7 @@ const Sidebar: FC<Props> = ({ isOpen, commands }) => {
   return isOpen ? (
     <aside
       ref={ref}
-      className="fixed left-0 top-0 z-10 h-full w-full border-r-[1px] border-neutral-500 bg-neutral-100 sm:min-w-[150px] sm:max-w-fit dark:bg-neutral-900"
+      className="fixed left-0 top-0 z-10 h-full w-full border-r-[1px] border-neutral-500 bg-neutral-100 dark:bg-neutral-900 sm:min-w-[150px] sm:max-w-fit"
     >
       <div className="flex flex-col items-start gap-6 px-6 py-3">
         <div className="flex w-full items-center justify-between">
@@ -68,6 +70,8 @@ const Sidebar: FC<Props> = ({ isOpen, commands }) => {
             </CommandGroup>
           </CommandList>
         </Command>
+
+        <SignOut />
       </div>
     </aside>
   ) : null;

@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { removeAuth, useSignOutMutation } from "@/entities/auth";
 import { useNavigate } from "react-router-dom";
+
+import { removeAuth, useSignOutMutation } from "@/entities/auth";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { useAuth } from "@/shared/hooks/use-auth";
 import { Button } from "@/shared/ui/button.tsx";

@@ -1,12 +1,12 @@
 import { FC } from "react";
 
-import { Container } from "@/widgets/container";
 import { SignOut } from "@/features/sign-out";
+import { Container } from "@/widgets/container";
 
 const RootPage: FC = () => {
   return (
     <Container>
-      <div className="flex items-center">
+      <div className="flex items-center py-5">
         <SignOut />
       </div>
     </Container>

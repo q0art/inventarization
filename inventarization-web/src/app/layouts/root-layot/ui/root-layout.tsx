@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
 
+import { useSidebar } from "@/shared/hooks/use-sidebar.ts";
+import { cn } from "@/shared/lib/cn.ts";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 import { Sidebar } from "@/widgets/sidebar";
-import { useSidebar } from "@/shared/hooks/use-sidebar.ts";
-import { cn } from "@/shared/lib/cn.ts";
 
 const RootLayout: FC = () => {
   const isOpen = useSidebar();

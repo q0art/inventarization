@@ -1,7 +1,8 @@
 import { FC } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card.tsx";
-import { Button } from "@/shared/ui/button.tsx";
 import { useNavigate } from "react-router-dom";
+
+import { Button } from "@/shared/ui/button.tsx";
+import { Card, CardContent, CardHeader, CardTitle } from "@/shared/ui/card.tsx";
 
 const NotFoundPage: FC = () => {
   const navigate = useNavigate();

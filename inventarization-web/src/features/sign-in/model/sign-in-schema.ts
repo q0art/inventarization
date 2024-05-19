@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 import {
   EMAIL_MAX_LENGTH,
   EMAIL_MIN_LENGTH,
@@ -5,7 +7,6 @@ import {
   PASSWORD_MAX_LENGTH,
   PASSWORD_MIN_LENGTH,
 } from "@/shared/constants";
-import { z } from "zod";
 
 export const signInSchema = z.object({
   email: z

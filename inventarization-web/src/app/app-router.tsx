@@ -1,12 +1,13 @@
 import { FC, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { LazyRootLayout } from "@/app/layouts/root-layot";
-import { LazyRootPage } from "@/pages/root-page";
-import { LazyNotFoundPage } from "@/pages/not-found-page";
 import { LazyAuthLayout } from "@/app/layouts/auth-layout";
+import { LazyRootLayout } from "@/app/layouts/root-layot";
 import { AuthProvider } from "@/app/providers/auth-provider";
+import { LazyNotFoundPage } from "@/pages/not-found-page";
+import { LazyRootPage } from "@/pages/root-page";
 import { LazySignInPage } from "@/pages/sign-in-page";
+import { LazySignUpPage } from "@/pages/sign-up-page";
 
 const AppRouter: FC = () => {
   return (
@@ -27,7 +28,7 @@ const AppRouter: FC = () => {
 
           <Route path="/auth" element={<LazyAuthLayout />}>
             <Route path="sign-in" element={<LazySignInPage />} />
-            <Route path="sign-up" element={<div>sign-up</div>} />
+            <Route path="sign-up" element={<LazySignUpPage />} />
           </Route>
 
           <Route path="*" element={<LazyNotFoundPage />} />

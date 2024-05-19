@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { SignInForm } from "@/features/sign-in";
+import { SignUpForm } from "@/features/sign-up";
 import { Button } from "@/shared/ui/button.tsx";
 import {
   Card,
@@ -11,25 +11,25 @@ import {
   CardTitle,
 } from "@/shared/ui/card";
 
-const SignInPage: FC = () => {
+const SignUpPage: FC = () => {
   const navigate = useNavigate();
 
   const onClick = () => {
-    navigate("/auth/sign-up");
+    navigate("/auth/sign-in");
   };
 
   return (
     <Card className="text-center">
       <CardHeader>
-        <CardTitle>sign in 🔥</CardTitle>
+        <CardTitle>sign up 🔥</CardTitle>
       </CardHeader>
       <CardContent>
-        <SignInForm />
+        <SignUpForm />
       </CardContent>
       <CardFooter>
         <div className="text-center">
           <Button onClick={onClick} variant="link">
-            don't have an account yet? sign up
+            already have an account? sign in
           </Button>
         </div>
       </CardFooter>
@@ -37,6 +37,6 @@ const SignInPage: FC = () => {
   );
 };
 
-SignInPage.displayName = "sign-in-page";
+SignUpPage.displayName = "sign-up-page";
 
-export default SignInPage;
+export default SignUpPage;

@@ -1,14 +1,14 @@
 import { FC } from "react";
-
-import { Container } from "@/widgets/container";
-import { ThemeToggle } from "@/widgets/theme-toggle";
-import { cn } from "@/shared/lib/cn.ts";
-import { useUser } from "@/shared/hooks/use-user.ts";
-import { Button } from "@/shared/ui/button.tsx";
-import { Link } from "react-router-dom";
 import { FaList } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch.ts";
+import { useUser } from "@/shared/hooks/use-user.ts";
+import { cn } from "@/shared/lib/cn.ts";
+import { Button } from "@/shared/ui/button.tsx";
+import { Container } from "@/widgets/container";
 import { toggleSidebar } from "@/widgets/sidebar";
+import { ThemeToggle } from "@/widgets/theme-toggle";
 
 interface Props {
   className?: string;

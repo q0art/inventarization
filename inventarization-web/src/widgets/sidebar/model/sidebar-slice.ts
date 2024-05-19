@@ -1,5 +1,6 @@
-import { SidebarState } from "@/widgets/sidebar/model/types.ts";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+import { SidebarState } from "@/widgets/sidebar/model/types.ts";
 
 const initialState: SidebarState = {
   isOpen: false,

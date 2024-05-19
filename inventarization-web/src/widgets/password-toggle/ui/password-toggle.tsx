@@ -1,5 +1,6 @@
 import { FC, MouseEvent } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
+
 import { cn } from "@/shared/lib/cn.ts";
 import { buttonVariants } from "@/shared/ui/button.tsx";
 
