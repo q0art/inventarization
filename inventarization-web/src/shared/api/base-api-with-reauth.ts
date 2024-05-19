@@ -5,9 +5,9 @@ import {
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query";
 
-import { AppState } from "@/shared/types/app-state.ts";
 import { AccessToken } from "@/entities/auth";
 import { removeAuth, setAuth } from "@/entities/auth/model/auth-slice.ts";
+import { AppState } from "@/shared/types/app-state.ts";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_BASE_URL,

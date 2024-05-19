@@ -1,7 +1,8 @@
 import { FC } from "react";
-import { Header } from "@/widgets/header";
 import { Outlet } from "react-router-dom";
+
 import { Footer } from "@/widgets/footer";
+import { Header } from "@/widgets/header";
 
 const RootLayout: FC = () => {
   return (
@@ -14,5 +15,7 @@ const RootLayout: FC = () => {
     </div>
   );
 };
+
+RootLayout.displayName = "root-layout";
 
 export default RootLayout;

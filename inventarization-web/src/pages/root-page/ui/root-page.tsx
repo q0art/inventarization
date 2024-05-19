@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { Container } from "@/widgets/container";
 
 const RootPage: FC = () => {
@@ -8,5 +9,7 @@ const RootPage: FC = () => {
     </Container>
   );
 };
+
+RootPage.displayName = "root-page";
 
 export default RootPage;

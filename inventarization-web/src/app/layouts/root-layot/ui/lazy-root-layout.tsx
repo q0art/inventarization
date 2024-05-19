@@ -1,5 +1,7 @@
-import { lazy } from "react";
+import { FC, lazy } from "react";
 
-const LazyRootLayout = lazy(() => import("./root-layout"));
+const LazyRootLayout: FC = lazy(() => import("./root-layout"));
+
+LazyRootLayout.displayName = "lazy-root-layout";
 
 export { LazyRootLayout };

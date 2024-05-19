@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+
 import { cn } from "@/shared/lib/cn.ts";
 
 interface Props {
@@ -18,5 +19,7 @@ const Container: FC<Props> = ({ className, children }) => {
     </div>
   );
 };
+
+Container.displayName = "container";
 
 export { Container };

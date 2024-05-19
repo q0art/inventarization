@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { AccessToken } from "./../api/types";
 import { accessTokenDecode } from "@/shared/lib/access-token-decode";
+
+import { AccessToken } from "./../api/types";
 import { AuthState } from "./types";
 
 const initialState: AuthState = {

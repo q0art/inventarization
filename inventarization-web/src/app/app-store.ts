@@ -13,12 +13,13 @@ import storage from "redux-persist/lib/storage";
 
 import { appReducer } from "@/app/app-reducer";
 import { authSlice } from "@/entities/auth";
+import { themeSlice } from "@/entities/theme";
 import { baseApi } from "@/shared/api/base-api.ts";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: [authSlice.name],
+  whitelist: [authSlice.name, themeSlice.name],
 };
 
 const persistedReducer = persistReducer(persistConfig, appReducer);

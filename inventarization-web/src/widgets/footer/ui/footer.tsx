@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { Container } from "@/widgets/container";
 
 const Footer: FC = () => {
@@ -10,5 +11,7 @@ const Footer: FC = () => {
     </footer>
   );
 };
+
+Footer.displayName = "footer";
 
 export { Footer };

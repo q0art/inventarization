@@ -1,5 +1,7 @@
-import { lazy } from "react";
+import { FC, lazy } from "react";
 
-const LazyRootPage = lazy(() => import("./root-page"));
+const LazyRootPage: FC = lazy(() => import("./root-page"));
+
+LazyRootPage.displayName = "lazy-root-page";
 
 export { LazyRootPage };
