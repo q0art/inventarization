@@ -4,8 +4,6 @@
 
 @layer base {
   body {
-    @apply box-border bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 font-mono
+    @apply box-border bg-neutral-100 font-inter font-medium text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100;
   }
 }
-
-  

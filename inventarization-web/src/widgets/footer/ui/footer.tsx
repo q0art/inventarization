@@ -8,6 +8,8 @@ interface Props {
 }
 
 const Footer: FC<Props> = ({ className }) => {
+  const year = new Date().getFullYear();
+
   return (
     <footer
       className={cn(
@@ -16,7 +18,9 @@ const Footer: FC<Props> = ({ className }) => {
       )}
     >
       <Container>
-        <div className="flex items-center justify-center">this is footer</div>
+        <div className="flex items-center justify-center">
+          <span>&copy; {year}</span>
+        </div>
       </Container>
     </footer>
   );

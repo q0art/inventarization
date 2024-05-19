@@ -1,11 +1,14 @@
 import { FC } from "react";
 
 import { Container } from "@/widgets/container";
+import { SignOut } from "@/features/sign-out";
 
 const RootPage: FC = () => {
   return (
     <Container>
-      <div className="flex items-center">some text</div>
+      <div className="flex items-center">
+        <SignOut />
+      </div>
     </Container>
   );
 };

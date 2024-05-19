@@ -20,7 +20,7 @@ const ThemeToggle: FC<Props> = ({ className }) => {
     dispatch(toggleTheme(theme === "light" ? "dark" : "light"));
   };
 
-  return theme === "light" ? (
+  return theme === "dark" ? (
     <FaMoon
       onClick={onClick}
       className={cn(
