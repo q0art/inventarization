@@ -3,7 +3,7 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { useUpdateBrandMutation } from "@/entities/brand";
+import { useCreateDepartamentMutation } from "@/entities/departament";
 import { Button } from "@/shared/ui/button";
 import {
   Form,
@@ -11,28 +11,24 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from "@/shared/ui/form.tsx";
-import { Input } from "@/shared/ui/input.tsx";
+} from "@/shared/ui/form";
+import { Input } from "@/shared/ui/input";
 
-import { UpdateBrandSchema } from "./../model/update-brand-schema";
+import { CreateDepartamentSchema } from "./../model/create-departament-schema";
 
-interface Props {
-  id: string;
-  prevName: string;
-}
-
-const UpdateBrandForm: FC<Props> = ({ id, prevName }) => {
-  const [updateBrand, { isError, error }] = useUpdateBrandMutation();
+const CreateDepartamentForm: FC = () => {
+  const [createDepartament, { isError, error }] =
+    useCreateDepartamentMutation();
 
   const form = useForm({
-    resolver: zodResolver(UpdateBrandSchema),
+    resolver: zodResolver(CreateDepartamentSchema),
     defaultValues: {
-      name: prevName,
+      name: "",
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof UpdateBrandSchema>) => {
-    await updateBrand({ id, dto: values });
+  const onSubmit = async (values: z.infer<typeof CreateDepartamentSchema>) => {
+    await createDepartament(values);
 
     form.reset();
   };
@@ -51,7 +47,7 @@ const UpdateBrandForm: FC<Props> = ({ id, prevName }) => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="unique brand name"
+                  placeholder="unique departament name"
                   type="text"
                   className="relative"
                 />
@@ -71,13 +67,13 @@ const UpdateBrandForm: FC<Props> = ({ id, prevName }) => {
         )}
 
         <Button variant="outline" type="submit">
-          update
+          create
         </Button>
       </form>
     </Form>
   );
 };
 
-UpdateBrandForm.displayName = "update-brand-form";
+CreateDepartamentForm.displayName = "create-departament-form";
 
-export { UpdateBrandForm };
+export { CreateDepartamentForm };

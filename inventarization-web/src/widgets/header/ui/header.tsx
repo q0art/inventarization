@@ -1,13 +1,19 @@
-import { List } from "lucide-react";
+import { Home, List, X } from "lucide-react";
 import { FC } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { useAppDispatch } from "@/shared/hooks/use-app-dispatch.ts";
-import { useUser } from "@/shared/hooks/use-user.ts";
-import { cn } from "@/shared/lib/cn.ts";
-import { Button } from "@/shared/ui/button.tsx";
+import { menuItems } from "@/shared/configs/menu-items";
+import { useUser } from "@/shared/hooks/use-user";
+import { cn } from "@/shared/lib/cn";
+import { Button, buttonVariants } from "@/shared/ui/button";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/shared/ui/sheet";
 import { Container } from "@/widgets/container";
-import { toggleSidebar } from "@/widgets/sidebar";
+import { MenuList } from "@/widgets/menu/ui/menu-list";
 import { ThemeToggle } from "@/widgets/theme-toggle";
 
 interface Props {
@@ -15,11 +21,12 @@ interface Props {
 }
 
 const Header: FC<Props> = ({ className }) => {
-  const dispatch = useAppDispatch();
   const user = useUser();
 
+  const navigate = useNavigate();
+
   const onClick = () => {
-    dispatch(toggleSidebar(true));
+    navigate("/");
   };
 
   return (
@@ -32,9 +39,30 @@ const Header: FC<Props> = ({ className }) => {
       <Container>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Button onClick={onClick} variant="ghost">
-              <List />
-            </Button>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost">
+                  <List className="h-4 w-4" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left">
+                <div className="mb-6 flex items-center justify-between">
+                  <Button onClick={onClick} variant="ghost">
+                    <Home className="h-5 w-5" />
+                  </Button>
+                  <SheetClose
+                    className={cn(
+                      buttonVariants({
+                        variant: "ghost",
+                      }),
+                    )}
+                  >
+                    <X className="h-4 w-4" />
+                  </SheetClose>
+                </div>
+                <MenuList menuItems={menuItems} />
+              </SheetContent>
+            </Sheet>
 
             {user ? (
               <span>{user.email}</span>

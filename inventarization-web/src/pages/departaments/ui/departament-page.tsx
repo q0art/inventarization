@@ -1,7 +1,10 @@
 import { FC } from "react";
 
-import { useDeleteBrandMutation, useGetAllBrandsQuery } from "@/entities/brand";
-import { CreateBrandForm } from "@/pages/brands/ui/create-brand-form";
+import {
+  useDeleteDepartamentMutation,
+  useGetAllDepartamentsQuery,
+} from "@/entities/departament";
+import { CreateDepartamentForm } from "@/pages/departaments/ui/create-departament-form.tsx";
 import { Alert, AlertTitle } from "@/shared/ui/alert.tsx";
 import { Button } from "@/shared/ui/button";
 import { DataTable } from "@/shared/ui/data-table";
@@ -14,13 +17,13 @@ import {
 } from "@/shared/ui/dialog";
 import { Container } from "@/widgets/container";
 
-import { createColumns } from "../lib/columns.tsx";
+import { createColumns } from "../lib/columns";
 
-const BrandsPage: FC = () => {
-  const { data, isSuccess } = useGetAllBrandsQuery();
-  const [deleteBrand] = useDeleteBrandMutation();
+const DepartamentPage: FC = () => {
+  const { data, isSuccess } = useGetAllDepartamentsQuery();
+  const [deleteDepartament] = useDeleteDepartamentMutation();
 
-  const columns = createColumns(deleteBrand);
+  const columns = createColumns(deleteDepartament);
 
   return (
     <Container>
@@ -29,14 +32,16 @@ const BrandsPage: FC = () => {
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="outline" className="w-full">
-                create brand
+                create departament
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle className="text-center">create brand</DialogTitle>
+                <DialogTitle className="text-center">
+                  create departament
+                </DialogTitle>
               </DialogHeader>
-              <CreateBrandForm />
+              <CreateDepartamentForm />
             </DialogContent>
           </Dialog>
 
@@ -45,7 +50,7 @@ const BrandsPage: FC = () => {
               <DataTable field="name" columns={columns} data={data} />
             ) : (
               <Alert>
-                <AlertTitle>brands dont exits yet 😭</AlertTitle>
+                <AlertTitle>departaments dont exits yet 😭</AlertTitle>
               </Alert>
             )
           ) : (
@@ -59,6 +64,6 @@ const BrandsPage: FC = () => {
   );
 };
 
-BrandsPage.displayName = "brands-page";
+DepartamentPage.displayName = "departament-page";
 
-export default BrandsPage;
+export default DepartamentPage;

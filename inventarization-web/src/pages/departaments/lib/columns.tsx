@@ -1,21 +1,22 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Pencil, X } from "lucide-react";
 
-import { Brand } from "@/entities/brand";
-import { UpdateBrandForm } from "@/pages/brands/ui/update-brand-form.tsx";
-import { Button } from "@/shared/ui/button.tsx";
-import { Checkbox } from "@/shared/ui/checkbox.tsx";
-import { DataTableColumnHeader } from "@/shared/ui/data-table-column-header.tsx";
+import { Departament } from "@/entities/departament";
+import { UpdateDepartamentForm } from "@/pages/departaments/ui/update-departament-form.tsx";
+import { formatDate } from "@/shared/lib/format-date";
+import { Button } from "@/shared/ui/button";
+import { Checkbox } from "@/shared/ui/checkbox";
+import { DataTableColumnHeader } from "@/shared/ui/data-table-column-header";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/shared/ui/dialog.tsx";
+} from "@/shared/ui/dialog";
 
 const createColumns = (onDelete: (id: string) => void) => {
-  const _columns: ColumnDef<Brand>[] = [
+  const _columns: ColumnDef<Departament>[] = [
     {
       id: "select",
       header: ({ table }) => (
@@ -42,14 +43,11 @@ const createColumns = (onDelete: (id: string) => void) => {
     },
     {
       accessorKey: "id",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="id" />
-      ),
       cell: ({ row }) => {
         return (
           <div className="flex space-x-2">
             <span className="max-w-[500px] truncate font-medium">
-              {row.getValue("id")}
+              {Number(row.id) + 1}
             </span>
           </div>
         );
@@ -79,7 +77,7 @@ const createColumns = (onDelete: (id: string) => void) => {
         return (
           <div className="flex space-x-2">
             <span className="max-w-[500px] truncate font-medium">
-              {row.getValue("createdAt")}
+              {formatDate(row.getValue("createdAt"))}
             </span>
           </div>
         );
@@ -94,7 +92,7 @@ const createColumns = (onDelete: (id: string) => void) => {
         return (
           <div className="flex space-x-2">
             <span className="max-w-[500px] truncate font-medium">
-              {row.getValue("updatedAt")}
+              {formatDate(row.getValue("updatedAt"))}
             </span>
           </div>
         );
@@ -112,9 +110,11 @@ const createColumns = (onDelete: (id: string) => void) => {
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle className="text-center">create brand</DialogTitle>
+                <DialogTitle className="text-center">
+                  create departament
+                </DialogTitle>
               </DialogHeader>
-              <UpdateBrandForm
+              <UpdateDepartamentForm
                 id={row.getValue("id")}
                 prevName={row.getValue("name")}
               />

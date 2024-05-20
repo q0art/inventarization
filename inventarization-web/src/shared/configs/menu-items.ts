@@ -1,11 +1,12 @@
-type Command = {
-  name: string;
-  link: string;
-};
+import { MenuItem } from "@/shared/types/menu-item.ts";
 
-export const commands: Command[] = [
+export const menuItems: MenuItem[] = [
   {
-    name: "brands",
-    link: "brands",
+    href: "/brands",
+    text: "brands",
+  },
+  {
+    href: "/departaments",
+    text: "departaments",
   },
 ];

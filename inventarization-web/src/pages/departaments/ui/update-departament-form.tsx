@@ -3,7 +3,7 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { useUpdateBrandMutation } from "@/entities/brand";
+import { useUpdateDepartamentMutation } from "@/entities/departament";
 import { Button } from "@/shared/ui/button";
 import {
   Form,
@@ -11,28 +11,29 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from "@/shared/ui/form.tsx";
-import { Input } from "@/shared/ui/input.tsx";
+} from "@/shared/ui/form";
+import { Input } from "@/shared/ui/input";
 
-import { UpdateBrandSchema } from "./../model/update-brand-schema";
+import { UpdateDepartamentSchema } from "./../model/update-departament-schema";
 
 interface Props {
   id: string;
   prevName: string;
 }
 
-const UpdateBrandForm: FC<Props> = ({ id, prevName }) => {
-  const [updateBrand, { isError, error }] = useUpdateBrandMutation();
+const UpdateDepartamentForm: FC<Props> = ({ id, prevName }) => {
+  const [updateDepartament, { isError, error }] =
+    useUpdateDepartamentMutation();
 
   const form = useForm({
-    resolver: zodResolver(UpdateBrandSchema),
+    resolver: zodResolver(UpdateDepartamentSchema),
     defaultValues: {
       name: prevName,
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof UpdateBrandSchema>) => {
-    await updateBrand({ id, dto: values });
+  const onSubmit = async (values: z.infer<typeof UpdateDepartamentSchema>) => {
+    await updateDepartament({ id, dto: values });
 
     form.reset();
   };
@@ -51,7 +52,7 @@ const UpdateBrandForm: FC<Props> = ({ id, prevName }) => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="unique brand name"
+                  placeholder="unique departament name"
                   type="text"
                   className="relative"
                 />
@@ -78,6 +79,6 @@ const UpdateBrandForm: FC<Props> = ({ id, prevName }) => {
   );
 };
 
-UpdateBrandForm.displayName = "update-brand-form";
+UpdateDepartamentForm.displayName = "update-departament-form";
 
-export { UpdateBrandForm };
+export { UpdateDepartamentForm };

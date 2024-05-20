@@ -1,9 +1,6 @@
-import {
-  Brand,
-  CreateBrandDto,
-  UpdateBrandDto,
-} from "@/entities/brand/model/types.ts";
-import { baseApi } from "@/shared/api/base-api.ts";
+import { baseApi } from "@/shared/api/base-api";
+
+import { Brand, CreateBrandDto, UpdateBrandDto } from "./../model/types";
 
 export const brandApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

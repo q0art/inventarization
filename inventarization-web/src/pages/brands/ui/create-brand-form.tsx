@@ -65,10 +65,14 @@ const CreateBrandForm: FC = () => {
           </div>
         )}
 
-        <Button type="submit">create</Button>
+        <Button variant="outline" type="submit">
+          create
+        </Button>
       </form>
     </Form>
   );
 };
+
+CreateBrandForm.displayName = "create-brand-form";
 
 export { CreateBrandForm };

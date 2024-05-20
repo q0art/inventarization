@@ -26,15 +26,16 @@ export const baseQueryWithReauth: BaseQueryFn<
   unknown,
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-  const result = await baseQuery(args, api, extraOptions);
+  let result = await baseQuery(args, api, extraOptions);
 
   if (result.error?.status === 401) {
     const { data } = await baseQuery("/auth/update-tokens", api, extraOptions);
 
-    console.log("@this is interceptor", data);
+    if (data) {
+      api.dispatch(setAuth(data as AccessToken));
 
-    if (data) api.dispatch(setAuth(data as AccessToken));
-    else api.dispatch(removeAuth());
+      result = await baseQuery(args, api, extraOptions);
+    } else api.dispatch(removeAuth());
   }
 
   return result;
