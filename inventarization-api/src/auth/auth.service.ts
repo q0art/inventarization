@@ -23,9 +23,9 @@ export class AuthService {
   async signIn(dto: SignInDto, userAgent: string) {
     const { email, password } = dto;
     const userByEmail = await this.userService.getByEmail(email);
-    const compared = await compare(password, userByEmail.passwordHash);
 
-    if (!userByEmail || !compared) throw new BadRequestException("invalid fields");
+    if (!userByEmail || !(await compare(password, userByEmail.passwordHash)))
+      throw new BadRequestException("invalid fields");
 
     const jwtPayload: JwtPayload = {
       id: userByEmail.id,

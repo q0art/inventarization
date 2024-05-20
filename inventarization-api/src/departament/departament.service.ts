@@ -92,6 +92,6 @@ export class DepartamentService {
         return null;
       });
 
-    return departament;
+    return id;
   }
 }

@@ -28,7 +28,7 @@
       "@departament/*": ["./src/departament/*"],
       "@workspace/*": ["./src/workspace/*"],
       "@brand/*": ["./src/brand/*"],
-      "@cpu/*": ["./src/cpu/*"],
+      "@cpu/*": ["src/cpu/*"],
       "@gpu/*": ["./src/gpu/*"],
       "@ram/*": ["./src/ram/*"],
       "@ssd/*": ["./src/ssd/*"]

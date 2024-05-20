@@ -1,5 +1,5 @@
 import { CreateItemDto, UpdateItemDto } from "@app/shared/types";
-import { CpuService } from "@cpu/cpu.service";
+import { CpuService } from "src/cpu/cpu.service";
 import {
   BadRequestException,
   Body,

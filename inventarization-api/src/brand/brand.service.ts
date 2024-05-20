@@ -94,6 +94,6 @@ export class BrandService {
         return null;
       });
 
-    return brand;
+    return id;
   }
 }
