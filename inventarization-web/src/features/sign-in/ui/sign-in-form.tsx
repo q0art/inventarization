@@ -46,7 +46,6 @@ const SignInForm: FC = () => {
     }
   };
 
-  // @ts-ignore
   return (
     <Form {...form}>
       <form
@@ -96,8 +95,10 @@ const SignInForm: FC = () => {
 
         {isError && (
           <div className="rounded-md border-[1px] border-neutral-500 bg-red-500 px-5 py-3 text-center">
-            {/*@ts-expect-error*/}
-            <span className="text-neutral-100">{error?.data.message}</span>
+            <span className="text-neutral-100">
+              {/*@ts-ignore*/}
+              {error?.data.message}
+            </span>
           </div>
         )}
 
