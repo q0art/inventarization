@@ -16,6 +16,6 @@ module.exports = {
     "prettier/prettier": ["error", { endOfLine: "auto" }],
     //
     "@typescript-eslint/ban-ts-ignore": "off",
-    "@typescript-eslint/ban-ts-comment": "off"
+    "@typescript-eslint/ban-ts-comment": "off",
   },
 };

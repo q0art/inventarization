@@ -6,8 +6,10 @@ import { Container } from "@/widgets/container";
 const RootPage: FC = () => {
   return (
     <Container>
-      <div className="flex items-center py-5">
-        <SignOut />
+      <div className="py-3">
+        <div className="flex items-center">
+          <SignOut />
+        </div>
       </div>
     </Container>
   );

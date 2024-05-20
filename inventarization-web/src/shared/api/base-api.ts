@@ -4,7 +4,7 @@ import { baseApiTags } from "@/shared/api/base-api-tags.ts";
 import { baseQueryWithReauth } from "@/shared/api/base-api-with-reauth.ts";
 
 export const baseApi = createApi({
-  tagTypes: [...baseApiTags],
+  tagTypes: baseApiTags,
   reducerPath: "api",
   baseQuery: baseQueryWithReauth,
   endpoints: () => ({}),

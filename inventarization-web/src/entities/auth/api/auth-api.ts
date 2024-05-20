@@ -1,17 +1,17 @@
 import { baseApi } from "@/shared/api/base-api";
 
-import { AccessToken, SignInBody, SignUpBody } from "./types";
+import { AccessToken, SignInDto, SignUpDto } from "./types";
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    signIn: builder.mutation<AccessToken, SignInBody>({
+    signIn: builder.mutation<AccessToken, SignInDto>({
       query: (body) => ({
         method: "POST",
         url: "auth/sign-in",
         body,
       }),
     }),
-    signUp: builder.mutation<AccessToken, SignUpBody>({
+    signUp: builder.mutation<AccessToken, SignUpDto>({
       query: (body) => ({
         method: "POST",
         url: "/auth/sign-up",

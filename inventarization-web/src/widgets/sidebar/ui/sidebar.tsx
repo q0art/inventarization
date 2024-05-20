@@ -1,7 +1,6 @@
+import { X } from "lucide-react";
 import { FC } from "react";
-import { FaXmark } from "react-icons/fa6";
-import { FaCircleUser } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { SignOut } from "@/features/sign-out";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch.ts";
@@ -23,15 +22,10 @@ interface Props {
 }
 
 const Sidebar: FC<Props> = ({ isOpen, commands }) => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const ref = useOnClickOutside(() => {
     dispatch(toggleSidebar(false));
   });
-
-  const onClickProfile = () => {
-    navigate("/user/profile");
-  };
 
   const onClickClose = () => {
     dispatch(toggleSidebar(false));
@@ -40,17 +34,12 @@ const Sidebar: FC<Props> = ({ isOpen, commands }) => {
   return isOpen ? (
     <aside
       ref={ref}
-      className="fixed left-0 top-0 z-10 h-full w-full border-r-[1px] border-neutral-500 bg-neutral-100 dark:bg-neutral-900 sm:min-w-[150px] sm:max-w-fit"
+      className="fixed left-0 top-0 z-50 h-full w-full border-r-[1px] border-neutral-500 bg-neutral-100 dark:bg-neutral-900 sm:min-w-[150px] sm:max-w-fit"
     >
       <div className="flex flex-col items-start gap-6 px-6 py-3">
-        <div className="flex w-full items-center justify-between">
-          <FaCircleUser
-            onClick={onClickProfile}
-            className="h-10 w-10 cursor-pointer delay-75 hover:opacity-30 active:scale-90"
-          />
-
-          <Button onClick={onClickClose} variant="ghost" className="mr-0">
-            <FaXmark />
+        <div className="flex w-full justify-end">
+          <Button onClick={onClickClose} variant="ghost">
+            <X />
           </Button>
         </div>
 

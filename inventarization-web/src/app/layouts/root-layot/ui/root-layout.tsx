@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
 
+import { commands } from "@/shared/configs/sidebar-commands.ts";
 import { useSidebar } from "@/shared/hooks/use-sidebar.ts";
 import { cn } from "@/shared/lib/cn.ts";
 import { Footer } from "@/widgets/footer";
@@ -10,27 +11,12 @@ import { Sidebar } from "@/widgets/sidebar";
 const RootLayout: FC = () => {
   const isOpen = useSidebar();
 
-  const commands = [
-    {
-      name: "employees",
-      link: "employees",
-    },
-    {
-      name: "cpus",
-      link: "cpus",
-    },
-    {
-      name: "gpus",
-      link: "gpus",
-    },
-  ];
-
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       {isOpen && (
         <div
-          className={cn("fixed left-0 top-0 z-0 h-full w-full", {
+          className={cn("fixed left-0 top-0 z-30 h-full w-full", {
             "bg-black/30 dark:bg-white/30": isOpen,
           })}
         />

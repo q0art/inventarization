@@ -1,9 +1,9 @@
-export type SignInBody = {
+export type SignInDto = {
   email: string;
   password: string;
 };
 
-export type SignUpBody = {
+export type SignUpDto = {
   email: string;
   password: string;
 };

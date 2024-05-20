@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LazyAuthLayout } from "@/app/layouts/auth-layout";
 import { LazyRootLayout } from "@/app/layouts/root-layot";
 import { AuthProvider } from "@/app/providers/auth-provider";
+import { LazyBrandsPage } from "@/pages/brands";
 import { LazyNotFoundPage } from "@/pages/not-found-page";
 import { LazyRootPage } from "@/pages/root-page";
 import { LazySignInPage } from "@/pages/sign-in-page";
@@ -17,10 +18,10 @@ const AppRouter: FC = () => {
           <Route path="/" element={<LazyRootLayout />}>
             <Route index element={<LazyRootPage />} />
             <Route
-              path="/employee"
+              path="/brands"
               element={
                 <AuthProvider>
-                  <div>employee</div>
+                  <LazyBrandsPage />
                 </AuthProvider>
               }
             />

@@ -1,5 +1,5 @@
+import { Eye, EyeOff } from "lucide-react";
 import { FC, MouseEvent } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 import { cn } from "@/shared/lib/cn.ts";
 import { buttonVariants } from "@/shared/ui/button.tsx";
@@ -12,7 +12,7 @@ interface Props {
 
 const PasswordToggle: FC<Props> = ({ isOpen, onClick, className }) => {
   return isOpen ? (
-    <FaEye
+    <Eye
       onClick={onClick}
       className={cn(
         buttonVariants({
@@ -24,7 +24,7 @@ const PasswordToggle: FC<Props> = ({ isOpen, onClick, className }) => {
       )}
     />
   ) : (
-    <FaEyeSlash
+    <EyeOff
       onClick={onClick}
       className={cn(
         buttonVariants({

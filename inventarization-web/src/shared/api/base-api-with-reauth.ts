@@ -31,9 +31,10 @@ export const baseQueryWithReauth: BaseQueryFn<
   if (result.error?.status === 401) {
     const { data } = await baseQuery("/auth/update-tokens", api, extraOptions);
 
-    if (data) {
-      api.dispatch(setAuth(data as AccessToken));
-    } else api.dispatch(removeAuth());
+    console.log("@this is interceptor", data);
+
+    if (data) api.dispatch(setAuth(data as AccessToken));
+    else api.dispatch(removeAuth());
   }
 
   return result;

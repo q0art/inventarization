@@ -1,5 +1,5 @@
+import { Moon, Sun } from "lucide-react";
 import { FC, MouseEvent } from "react";
-import { FaMoon, FaSun } from "react-icons/fa6";
 
 import { toggleTheme } from "@/entities/theme";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch.ts";
@@ -22,7 +22,7 @@ const ThemeToggle: FC<Props> = ({ className }) => {
   };
 
   return theme === "dark" ? (
-    <FaMoon
+    <Moon
       onClick={onClick}
       className={cn(
         buttonVariants({
@@ -34,7 +34,7 @@ const ThemeToggle: FC<Props> = ({ className }) => {
       )}
     />
   ) : (
-    <FaSun
+    <Sun
       onClick={onClick}
       className={cn(
         buttonVariants({

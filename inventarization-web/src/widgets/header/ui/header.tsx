@@ -1,5 +1,5 @@
+import { List } from "lucide-react";
 import { FC } from "react";
-import { FaList } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch.ts";
@@ -33,7 +33,7 @@ const Header: FC<Props> = ({ className }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Button onClick={onClick} variant="ghost">
-              <FaList />
+              <List />
             </Button>
 
             {user ? (
