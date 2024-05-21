@@ -18,8 +18,8 @@ export class BrandController {
   constructor(private readonly brandService: BrandService) {}
 
   @Get("")
-  async getAllByName(@Query("name") name: string) {
-    return await this.brandService.getAllByName(name);
+  async getAllByName() {
+    return await this.brandService.getAll();
   }
 
   @Get(":id")

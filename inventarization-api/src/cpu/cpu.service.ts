@@ -9,20 +9,22 @@ export class CpuService {
 
   constructor(private readonly prismaService: PrismaService) {}
 
-  async getAllByModel(model: string) {
-    const cpus: Cpu[] = await this.prismaService.cpu
-      .findMany({
-        where: {
-          model: {
-            contains: model,
-            mode: "insensitive",
+  async getAll() {
+    const cpus = await this.prismaService.cpu.findMany({
+      select: {
+        id: true,
+        model: true,
+        manufacturerCode: true,
+        createdAt: true,
+        updatedAt: true,
+        brand: {
+          select: {
+            id: true,
+            name: true,
           },
         },
-      })
-      .catch((error) => {
-        this.logger.error(error);
-        return [];
-      });
+      },
+    });
 
     return cpus;
   }
@@ -98,7 +100,7 @@ export class CpuService {
   }
 
   async delete(id: string) {
-    const cpu: Cpu = await this.prismaService.cpu
+    await this.prismaService.cpu
       .delete({
         where: { id },
       })
@@ -107,6 +109,6 @@ export class CpuService {
         return null;
       });
 
-    return cpu;
+    return id;
   }
 }

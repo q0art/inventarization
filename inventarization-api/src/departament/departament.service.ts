@@ -83,7 +83,7 @@ export class DepartamentService {
   }
 
   async delete(id: string) {
-    const departament: Departament = await this.prismaService.departament
+    await this.prismaService.departament
       .delete({
         where: { id },
       })

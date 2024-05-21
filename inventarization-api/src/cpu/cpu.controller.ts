@@ -1,5 +1,4 @@
 import { CreateItemDto, UpdateItemDto } from "@app/shared/types";
-import { CpuService } from "src/cpu/cpu.service";
 import {
   BadRequestException,
   Body,
@@ -10,16 +9,16 @@ import {
   Param,
   Patch,
   Post,
-  Query,
 } from "@nestjs/common";
+import { CpuService } from "src/cpu/cpu.service";
 
 @Controller("cpu")
 export class CpuController {
   constructor(private readonly cpuService: CpuService) {}
 
   @Get("")
-  async getAllByModel(@Query("model") model: string) {
-    return await this.cpuService.getAllByModel(model);
+  async getAll() {
+    return await this.cpuService.getAll();
   }
 
   @Get(":id")

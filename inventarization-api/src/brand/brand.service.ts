@@ -9,20 +9,11 @@ export class BrandService {
 
   constructor(private readonly prismaService: PrismaService) {}
 
-  async getAllByName(name: string) {
-    const brands: Brand[] = await this.prismaService.brand
-      .findMany({
-        where: {
-          name: {
-            contains: name,
-            mode: "insensitive",
-          },
-        },
-      })
-      .catch((error) => {
-        this.logger.error(error);
-        return [];
-      });
+  async getAll() {
+    const brands: Brand[] = await this.prismaService.brand.findMany().catch((error) => {
+      this.logger.error(error);
+      return [];
+    });
 
     return brands;
   }
@@ -85,7 +76,7 @@ export class BrandService {
   }
 
   async delete(id: string) {
-    const brand: Brand = await this.prismaService.brand
+    await this.prismaService.brand
       .delete({
         where: { id },
       })
