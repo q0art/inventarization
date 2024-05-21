@@ -1,8 +1,8 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Pencil, X } from "lucide-react";
 
-import { Departament } from "@/entities/departament";
-import { UpdateDepartamentForm } from "@/pages/departaments/ui/update-departament-form.tsx";
+import { CpuWithBrandName } from "@/entities/cpu";
+import { UpdateCpuForm } from "@/pages/cpus/ui/update-cpu-form.tsx";
 import { formatDate } from "@/shared/lib/format-date";
 import { Button } from "@/shared/ui/button";
 import { Checkbox } from "@/shared/ui/checkbox";
@@ -16,7 +16,7 @@ import {
 } from "@/shared/ui/dialog";
 
 const createColumns = (onDelete: (id: string) => void) => {
-  const _columns: ColumnDef<Departament>[] = [
+  const _columns: ColumnDef<CpuWithBrandName>[] = [
     {
       id: "select",
       header: ({ table }) => (
@@ -54,15 +54,46 @@ const createColumns = (onDelete: (id: string) => void) => {
       },
     },
     {
-      accessorKey: "name",
+      accessorKey: "model",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="name" />
+        <DataTableColumnHeader column={column} title="model" />
       ),
       cell: ({ row }) => {
         return (
           <div className="flex space-x-2">
             <span className="max-w-[500px] truncate font-medium">
-              {row.getValue("name")}
+              {row.getValue("model")}
+            </span>
+          </div>
+        );
+      },
+    },
+    {
+      accessorKey: "manufacturerCode",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="manufacturer code" />
+      ),
+      cell: ({ row }) => {
+        return (
+          <div className="flex space-x-2">
+            <span className="max-w-[500px] truncate font-medium">
+              {row.getValue("manufacturerCode")}
+            </span>
+          </div>
+        );
+      },
+    },
+    {
+      accessorKey: "brand",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="brand name" />
+      ),
+      cell: ({ row }) => {
+        return (
+          <div className="flex space-x-2">
+            <span className="max-w-[500px] truncate font-medium">
+              {/*@ts-ignore*/}
+              {row.getValue("brand")?.name}
             </span>
           </div>
         );
@@ -111,12 +142,14 @@ const createColumns = (onDelete: (id: string) => void) => {
             <DialogContent>
               <DialogHeader>
                 <DialogTitle className="text-center">
-                  update departament
+                  create departament
                 </DialogTitle>
               </DialogHeader>
-              <UpdateDepartamentForm
+              <UpdateCpuForm
                 id={row.getValue("id")}
-                prevName={row.getValue("name")}
+                model={row.getValue("model")}
+                manufacturerCode={row.getValue("manufacturerCode")}
+                brand={row.getValue("brand")}
               />
             </DialogContent>
           </Dialog>

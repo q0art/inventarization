@@ -9,4 +9,8 @@ export const menuItems: MenuItem[] = [
     href: "/departaments",
     text: "departaments",
   },
+  {
+    href: "/cpus",
+    text: "cpus",
+  },
 ];

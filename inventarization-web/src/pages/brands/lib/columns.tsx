@@ -110,11 +110,11 @@ const createColumns = (onDelete: (id: string) => void) => {
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle className="text-center">create brand</DialogTitle>
+                <DialogTitle className="text-center">update brand</DialogTitle>
               </DialogHeader>
               <UpdateBrandForm
                 id={row.getValue("id")}
-                prevName={row.getValue("name")}
+                name={row.getValue("name")}
               />
             </DialogContent>
           </Dialog>

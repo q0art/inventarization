@@ -3,7 +3,7 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { useUpdateBrandMutation } from "@/entities/brand";
+import { Brand, useUpdateBrandMutation } from "@/entities/brand";
 import { Button } from "@/shared/ui/button";
 import {
   Form,
@@ -16,18 +16,17 @@ import { Input } from "@/shared/ui/input.tsx";
 
 import { UpdateBrandSchema } from "./../model/update-brand-schema";
 
-interface Props {
+interface Props extends Pick<Brand, "name"> {
   id: string;
-  prevName: string;
 }
 
-const UpdateBrandForm: FC<Props> = ({ id, prevName }) => {
+const UpdateBrandForm: FC<Props> = ({ id, name }) => {
   const [updateBrand, { isError, error }] = useUpdateBrandMutation();
 
   const form = useForm({
     resolver: zodResolver(UpdateBrandSchema),
     defaultValues: {
-      name: prevName,
+      name: name || "",
     },
   });
 
