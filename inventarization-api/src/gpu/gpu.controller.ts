@@ -18,8 +18,8 @@ export class GpuController {
   constructor(private readonly gpuService: GpuService) {}
 
   @Get("")
-  async getAllByModel(@Query("model") model: string) {
-    return await this.gpuService.getAllByModel(model);
+  async getAllByModel() {
+    return await this.gpuService.getAll();
   }
 
   @Get(":id")
@@ -55,11 +55,12 @@ export class GpuController {
     const { model, manufacturerCode } = dto;
     const gpuByModel = await this.gpuService.getByModel(model);
 
-    if (gpuByModel) throw new ConflictException(`gpu already exist with model: ${model}`);
+    if (gpuByModel && gpuByModel.model !== dto.model)
+      throw new ConflictException(`gpu already exist with model: ${model}`);
 
     const gpuByManufacturerCode = await this.gpuService.getByManufacturerCode(manufacturerCode);
 
-    if (gpuByManufacturerCode)
+    if (gpuByManufacturerCode && gpuByManufacturerCode.manufacturerCode !== dto.manufacturerCode)
       throw new ConflictException(`gpu already exist with manufacturer code: ${manufacturerCode}`);
 
     return await this.gpuService.update(id, dto);

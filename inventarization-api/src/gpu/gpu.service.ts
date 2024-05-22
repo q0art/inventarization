@@ -9,20 +9,22 @@ export class GpuService {
 
   constructor(private readonly prismaService: PrismaService) {}
 
-  async getAllByModel(model: string) {
-    const gpus: Gpu[] = await this.prismaService.gpu
-      .findMany({
-        where: {
-          model: {
-            contains: model,
-            mode: "insensitive",
+  async getAll() {
+    const gpus = await this.prismaService.gpu.findMany({
+      select: {
+        id: true,
+        model: true,
+        manufacturerCode: true,
+        createdAt: true,
+        updatedAt: true,
+        brand: {
+          select: {
+            id: true,
+            name: true,
           },
         },
-      })
-      .catch((error) => {
-        this.logger.error(error);
-        return [];
-      });
+      },
+    });
 
     return gpus;
   }
