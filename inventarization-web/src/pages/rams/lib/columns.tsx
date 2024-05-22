@@ -1,7 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Pencil, X } from "lucide-react";
 
-import { GpuWithBrandName } from "@/entities/gpu";
+import { RamWithBrandName } from "@/entities/ram";
 import { UpdateGpuForm } from "@/pages/gpus/ui/update-gpu-form.tsx";
 import { formatDate } from "@/shared/lib/format-date";
 import { Button } from "@/shared/ui/button";
@@ -14,9 +14,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/shared/ui/dialog";
+import { UpdateRamForm } from "../ui/update-ram-form";
 
 const createColumns = (onDelete: (id: string) => void) => {
-  const _columns: ColumnDef<GpuWithBrandName>[] = [
+  const _columns: ColumnDef<RamWithBrandName>[] = [
     {
       id: "select",
       header: ({ table }) => (
@@ -140,9 +141,9 @@ const createColumns = (onDelete: (id: string) => void) => {
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle className="text-center">update gpu</DialogTitle>
+                <DialogTitle className="text-center">update ram</DialogTitle>
               </DialogHeader>
-              <UpdateGpuForm
+              <UpdateRamForm
                 id={row.getValue("id")}
                 model={row.getValue("model")}
                 manufacturerCode={row.getValue("manufacturerCode")}

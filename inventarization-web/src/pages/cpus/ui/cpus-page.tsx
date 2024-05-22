@@ -15,7 +15,7 @@ import {
 } from "@/shared/ui/dialog.tsx";
 import { Container } from "@/widgets/container";
 
-const CpuPage: FC = () => {
+const CpusPage: FC = () => {
   const { data, isSuccess } = useGetAllCpusQuery();
   const [deleteCpu] = useDeleteCpuMutation();
 
@@ -58,6 +58,6 @@ const CpuPage: FC = () => {
   );
 };
 
-CpuPage.displayName = "cpu-page";
+CpusPage.displayName = "cpus-page";
 
-export default CpuPage;
+export default CpusPage;

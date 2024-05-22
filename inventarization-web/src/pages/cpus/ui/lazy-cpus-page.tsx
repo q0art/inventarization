@@ -1,7 +1,7 @@
 import { FC, lazy } from "react";
 
-const LazyCpuPage: FC = lazy(() => import("./cpu-page"));
+const LazyCpusPage: FC = lazy(() => import("./cpus-page.tsx"));
 
-LazyCpuPage.displayName = "lazy-cpu-page";
+LazyCpusPage.displayName = "lazy-cpus-page";
 
-export { LazyCpuPage };
+export { LazyCpusPage };

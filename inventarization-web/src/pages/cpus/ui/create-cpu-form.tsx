@@ -149,10 +149,8 @@ const CreateCpuForm: FC = () => {
 
         {isError && (
           <div className="rounded-md border-[1px] border-neutral-500 bg-red-500 px-5 py-3 text-center">
-            <span className="text-neutral-100">
-              {/*@ts-ignore*/}
-              {error?.data.message}
-            </span>
+            {/*@ts-ignore*/}
+            <span className="text-neutral-100">{error.data.message}</span>
           </div>
         )}
 

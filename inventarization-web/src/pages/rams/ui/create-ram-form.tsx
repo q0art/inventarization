@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { useGetAllBrandsQuery } from "@/entities/brand";
-import { GpuWithBrandName, useUpdateGpuMutation } from "@/entities/gpu";
 import { cn } from "@/shared/lib/cn";
 import { Button } from "@/shared/ui/button";
 import {
@@ -26,28 +25,24 @@ import {
 import { Input } from "@/shared/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 
-import { UpdateGpuSchema } from "./../model/update-gpu-schema";
+import { CreateRamSchema } from "./../model/create-ram-schema";
+import { useCreateRamMutation } from "@/entities/ram";
 
-interface Props
-  extends Pick<GpuWithBrandName, "model" | "manufacturerCode" | "brand"> {
-  id: string;
-}
-
-const UpdateGpuForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
-  const [updateGpu, { isError, error }] = useUpdateGpuMutation();
+const CreateRamForm: FC = () => {
+  const [createRam, { isError, error }] = useCreateRamMutation();
   const { data: brands } = useGetAllBrandsQuery();
 
   const form = useForm({
-    resolver: zodResolver(UpdateGpuSchema),
+    resolver: zodResolver(CreateRamSchema),
     defaultValues: {
-      model: model || "",
-      manufacturerCode: manufacturerCode || "",
-      brandId: brand.id || "",
+      model: "",
+      manufacturerCode: "",
+      brandId: "",
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof UpdateGpuSchema>) => {
-    await updateGpu({ id, dto: values });
+  const onSubmit = async (values: z.infer<typeof CreateRamSchema>) => {
+    await createRam(values);
 
     form.reset();
   };
@@ -66,7 +61,7 @@ const UpdateGpuForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="unique gpu model"
+                  placeholder="unique ram model"
                   type="text"
                   className="relative"
                 />
@@ -84,7 +79,7 @@ const UpdateGpuForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="unique gpu manufacturer code"
+                  placeholder="unique ram manufacturer code"
                   type="text"
                   className="relative"
                 />
@@ -157,19 +152,19 @@ const UpdateGpuForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
           <div className="rounded-md border-[1px] border-neutral-500 bg-red-500 px-5 py-3 text-center">
             <span className="text-neutral-100">
               {/*@ts-ignore*/}
-              {error?.data.message}
+              <span className="text-neutral-100">{error.data.message}</span>
             </span>
           </div>
         )}
 
         <Button variant="outline" type="submit">
-          update
+          create
         </Button>
       </form>
     </Form>
   );
 };
 
-UpdateGpuForm.displayName = "update-gpu-form";
+CreateRamForm.displayName = "create-ram-form";
 
-export { UpdateGpuForm };
+export { CreateRamForm };

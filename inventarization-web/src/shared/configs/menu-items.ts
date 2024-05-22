@@ -13,4 +13,12 @@ export const menuItems: MenuItem[] = [
     href: "/cpus",
     text: "cpus",
   },
+  {
+    href: "/gpus",
+    text: "gpus",
+  },
+  {
+    href: "/rams",
+    text: "rams",
+  },
 ];

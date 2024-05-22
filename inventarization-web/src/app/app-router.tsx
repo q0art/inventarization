@@ -5,12 +5,14 @@ import { LazyAuthLayout } from "@/app/layouts/auth-layout";
 import { LazyRootLayout } from "@/app/layouts/root-layot";
 import { AuthProvider } from "@/app/providers/auth-provider";
 import { LazyBrandsPage } from "@/pages/brands";
-import { LazyCpuPage } from "@/pages/cpus";
+import { LazyCpusPage } from "@/pages/cpus";
 import { LazyDepartamentPage } from "@/pages/departaments";
+import { LazyGpusPage } from "@/pages/gpus";
 import { LazyNotFoundPage } from "@/pages/not-found-page";
 import { LazyRootPage } from "@/pages/root-page";
 import { LazySignInPage } from "@/pages/sign-in-page";
 import { LazySignUpPage } from "@/pages/sign-up-page";
+import { LazyRamsPage } from "@/pages/rams";
 
 const AppRouter: FC = () => {
   return (
@@ -39,7 +41,24 @@ const AppRouter: FC = () => {
               path="/cpus"
               element={
                 <AuthProvider>
-                  <LazyCpuPage />
+                  <LazyCpusPage />
+                </AuthProvider>
+              }
+            />
+            <Route
+              path="/gpus"
+              element={
+                <AuthProvider>
+                  <LazyGpusPage />
+                </AuthProvider>
+              }
+            />
+
+            <Route
+              path="/rams"
+              element={
+                <AuthProvider>
+                  <LazyRamsPage />
                 </AuthProvider>
               }
             />

@@ -4,7 +4,7 @@ import {
   CreateCpuDto,
   UpdateCpuDto,
 } from "@/entities/cpu";
-import { baseApi } from "@/shared/api/base-api.ts";
+import { baseApi } from "@/shared/api/base-api";
 
 export const cpuApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

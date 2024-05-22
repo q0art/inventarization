@@ -1,23 +1,22 @@
-import { FC } from "react";
-
-import { useDeleteGpuMutation, useGetAllGpusQuery } from "@/entities/gpu";
-import { createColumns } from "@/pages/gpus/lib/columns.tsx";
-import { CreateGpuForm } from "@/pages/gpus/ui/create-gpu-form.tsx";
+import { useDeleteRamMutation, useGetAllRamsQuery } from "@/entities/ram";
 import { Alert, AlertTitle } from "@/shared/ui/alert";
-import { Button } from "@/shared/ui/button";
 import { DataTable } from "@/shared/ui/data-table";
 import {
-  Dialog,
   DialogContent,
+  Dialog,
+  DialogTrigger,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/shared/ui/dialog";
-import { Container } from "@/widgets/container";
+import { Container } from "@/widgets/container/ui/container";
+import { FC } from "react";
+import { createColumns } from "../lib/columns";
+import { Button } from "@/shared/ui/button";
+import { CreateRamForm } from "./create-ram-form";
 
-const GpusPage: FC = () => {
-  const { data, isSuccess } = useGetAllGpusQuery();
-  const [deleteGpu] = useDeleteGpuMutation();
+const RamsPage: FC = () => {
+  const { data, isSuccess } = useGetAllRamsQuery();
+  const [deleteGpu] = useDeleteRamMutation();
 
   const columns = createColumns(deleteGpu);
 
@@ -28,14 +27,14 @@ const GpusPage: FC = () => {
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="outline" className="w-full">
-                create gpu
+                create ram
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle className="text-center">create gpu</DialogTitle>
               </DialogHeader>
-              <CreateGpuForm />
+              <CreateRamForm />
             </DialogContent>
           </Dialog>
 
@@ -58,6 +57,6 @@ const GpusPage: FC = () => {
   );
 };
 
-GpusPage.displayName = "gpus-page";
+RamsPage.displayName = "rams-page";
 
-export default GpusPage;
+export default RamsPage;

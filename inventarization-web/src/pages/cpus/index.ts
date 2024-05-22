@@ -1,1 +1,1 @@
-export * from "./ui/lazy-cpu-page";
+export * from "./ui/lazy-cpus-page.tsx";

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { useGetAllBrandsQuery } from "@/entities/brand";
-import { GpuWithBrandName, useUpdateGpuMutation } from "@/entities/gpu";
+import { RamWithBrandName } from "@/entities/ram";
 import { cn } from "@/shared/lib/cn";
 import { Button } from "@/shared/ui/button";
 import {
@@ -26,19 +26,20 @@ import {
 import { Input } from "@/shared/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 
-import { UpdateGpuSchema } from "./../model/update-gpu-schema";
+import { UpdateRamSchema } from "./../model/update-ram-schema";
+import { useUpdateRamMutation } from "@/entities/ram";
 
 interface Props
-  extends Pick<GpuWithBrandName, "model" | "manufacturerCode" | "brand"> {
+  extends Pick<RamWithBrandName, "model" | "manufacturerCode" | "brand"> {
   id: string;
 }
 
-const UpdateGpuForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
-  const [updateGpu, { isError, error }] = useUpdateGpuMutation();
+const UpdateRamForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
+  const [updateRam, { isError, error }] = useUpdateRamMutation();
   const { data: brands } = useGetAllBrandsQuery();
 
   const form = useForm({
-    resolver: zodResolver(UpdateGpuSchema),
+    resolver: zodResolver(UpdateRamSchema),
     defaultValues: {
       model: model || "",
       manufacturerCode: manufacturerCode || "",
@@ -46,8 +47,8 @@ const UpdateGpuForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof UpdateGpuSchema>) => {
-    await updateGpu({ id, dto: values });
+  const onSubmit = async (values: z.infer<typeof UpdateRamSchema>) => {
+    await updateRam({ id, dto: values });
 
     form.reset();
   };
@@ -66,7 +67,7 @@ const UpdateGpuForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="unique gpu model"
+                  placeholder="unique ram model"
                   type="text"
                   className="relative"
                 />
@@ -84,7 +85,7 @@ const UpdateGpuForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="unique gpu manufacturer code"
+                  placeholder="unique ram manufacturer code"
                   type="text"
                   className="relative"
                 />
@@ -170,6 +171,6 @@ const UpdateGpuForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
   );
 };
 
-UpdateGpuForm.displayName = "update-gpu-form";
+UpdateRamForm.displayName = "update-ram-form";
 
-export { UpdateGpuForm };
+export { UpdateRamForm };

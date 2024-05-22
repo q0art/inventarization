@@ -1,1 +1,1 @@
-export const baseApiTags = ["Brand", "Departament", "Cpu"];
+export const baseApiTags = ["Brand", "Departament", "Cpu", "Gpu", "Ram"];

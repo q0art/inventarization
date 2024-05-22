@@ -169,6 +169,6 @@ const UpdateCpuForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
   );
 };
 
-UpdateCpuForm.displayName = "create-cpu-form";
+UpdateCpuForm.displayName = "update-cpu-form";
 
 export { UpdateCpuForm };

@@ -92,8 +92,7 @@ const createColumns = (onDelete: (id: string) => void) => {
         return (
           <div className="flex space-x-2">
             <span className="max-w-[500px] truncate font-medium">
-              {/*@ts-ignore*/}
-              {row.getValue("brand")?.name}
+              {row.getValue<{ name: string }>("brand").name}
             </span>
           </div>
         );
@@ -141,9 +140,7 @@ const createColumns = (onDelete: (id: string) => void) => {
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle className="text-center">
-                  create departament
-                </DialogTitle>
+                <DialogTitle className="text-center">update cpu</DialogTitle>
               </DialogHeader>
               <UpdateCpuForm
                 id={row.getValue("id")}
