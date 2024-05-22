@@ -18,8 +18,8 @@ export class RamController {
   constructor(private readonly ramService: RamService) {}
 
   @Get("")
-  async getAllByModel(@Query("model") model: string) {
-    return await this.ramService.getAllByModel(model);
+  async getAllByModel() {
+    return await this.ramService.getAll();
   }
 
   @Get(":id")
@@ -55,11 +55,12 @@ export class RamController {
     const { model, manufacturerCode } = dto;
     const ramByModel = await this.ramService.getByModel(model);
 
-    if (ramByModel) throw new ConflictException(`ram already exist with model: ${model}`);
+    if (ramByModel && ramByModel.model !== dto.model)
+      throw new ConflictException(`ram already exist with model: ${model}`);
 
     const ramByManufacturerCode = await this.ramService.getByManufacturerCode(manufacturerCode);
 
-    if (ramByManufacturerCode)
+    if (ramByManufacturerCode && ramByManufacturerCode.manufacturerCode !== dto.manufacturerCode)
       throw new ConflictException(`ram already exist with manufacturer code: ${manufacturerCode}`);
 
     return await this.ramService.update(id, dto);

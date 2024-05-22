@@ -9,20 +9,22 @@ export class RamService {
 
   constructor(private readonly prismaService: PrismaService) {}
 
-  async getAllByModel(model: string) {
-    const rams: Ram[] = await this.prismaService.ram
-      .findMany({
-        where: {
-          model: {
-            contains: model,
-            mode: "insensitive",
+  async getAll() {
+    const rams = await this.prismaService.ram.findMany({
+      select: {
+        id: true,
+        model: true,
+        manufacturerCode: true,
+        createdAt: true,
+        updatedAt: true,
+        brand: {
+          select: {
+            id: true,
+            name: true,
           },
         },
-      })
-      .catch((error) => {
-        this.logger.error(error);
-        return [];
-      });
+      },
+    });
 
     return rams;
   }
