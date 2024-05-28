@@ -12,6 +12,7 @@ import { LazyDepartamentPage } from "@/pages/departaments";
 import { LazyGpusPage } from "@/pages/gpus";
 import { LazyHeadphonesPage } from "@/pages/headphones";
 import { LazyKeyboardsPage } from "@/pages/keyboards";
+import { LazyMonitorsPage } from "@/pages/monitors";
 import { LazyMotherboardsPage } from "@/pages/motherboards";
 import { LazyMousepadsPage } from "@/pages/mousepads";
 import { LazyMousesPage } from "@/pages/mouses";
@@ -139,6 +140,15 @@ const AppRouter: FC = () => {
               element={
                 <AuthProvider>
                   <LazyMousepadsPage />
+                </AuthProvider>
+              }
+            />
+
+            <Route
+              path="/monitors"
+              element={
+                <AuthProvider>
+                  <LazyMonitorsPage />
                 </AuthProvider>
               }
             />

@@ -53,4 +53,8 @@ export const menuItems: MenuItem[] = [
     href: "/mousepads",
     text: "mousepads",
   },
+  {
+    href: "/monitors",
+    text: "monitors",
+  },
 ];

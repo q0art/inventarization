@@ -12,4 +12,5 @@ export const baseApiTags = [
   "Keyboard",
   "Mouse",
   "Mousepad",
+  "Monitor",
 ];
