@@ -25,4 +25,12 @@ export const menuItems: MenuItem[] = [
     href: "/ssds",
     text: "ssds",
   },
+  {
+    href: "/motherboards",
+    text: "motherboards",
+  },
+  {
+    href: "/cases",
+    text: "cases",
+  },
 ];

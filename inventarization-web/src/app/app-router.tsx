@@ -5,9 +5,11 @@ import { LazyAuthLayout } from "@/app/layouts/auth-layout";
 import { LazyRootLayout } from "@/app/layouts/root-layot";
 import { AuthProvider } from "@/app/providers/auth-provider";
 import { LazyBrandsPage } from "@/pages/brands";
+import { LazyCasesPage } from "@/pages/cases";
 import { LazyCpusPage } from "@/pages/cpus";
 import { LazyDepartamentPage } from "@/pages/departaments";
 import { LazyGpusPage } from "@/pages/gpus";
+import { LazyMotherboardsPage } from "@/pages/motherboards";
 import { LazyNotFoundPage } from "@/pages/not-found-page";
 import { LazyRamsPage } from "@/pages/rams";
 import { LazyRootPage } from "@/pages/root-page";
@@ -69,6 +71,24 @@ const AppRouter: FC = () => {
               element={
                 <AuthProvider>
                   <LazySsdsPage />
+                </AuthProvider>
+              }
+            />
+
+            <Route
+              path="/motherboards"
+              element={
+                <AuthProvider>
+                  <LazyMotherboardsPage />
+                </AuthProvider>
+              }
+            />
+
+            <Route
+              path="/cases"
+              element={
+                <AuthProvider>
+                  <LazyCasesPage />
                 </AuthProvider>
               }
             />
