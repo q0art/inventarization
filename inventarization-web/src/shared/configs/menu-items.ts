@@ -37,4 +37,8 @@ export const menuItems: MenuItem[] = [
     href: "/coolers",
     text: "coolers",
   },
+  {
+    href: "/headphones",
+    text: "headphones",
+  },
 ];

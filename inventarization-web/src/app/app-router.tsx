@@ -10,6 +10,7 @@ import { LazyCoolersPage } from "@/pages/coolers";
 import { LazyCpusPage } from "@/pages/cpus";
 import { LazyDepartamentPage } from "@/pages/departaments";
 import { LazyGpusPage } from "@/pages/gpus";
+import { LazyHeadphonesPage } from "@/pages/headphones";
 import { LazyMotherboardsPage } from "@/pages/motherboards";
 import { LazyNotFoundPage } from "@/pages/not-found-page";
 import { LazyRamsPage } from "@/pages/rams";
@@ -99,6 +100,15 @@ const AppRouter: FC = () => {
               element={
                 <AuthProvider>
                   <LazyCoolersPage />
+                </AuthProvider>
+              }
+            />
+
+            <Route
+              path="/headphones"
+              element={
+                <AuthProvider>
+                  <LazyHeadphonesPage />
                 </AuthProvider>
               }
             />

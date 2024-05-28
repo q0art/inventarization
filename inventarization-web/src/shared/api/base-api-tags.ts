@@ -8,4 +8,5 @@ export const baseApiTags = [
   "Motherboard",
   "Case",
   "Cooler",
+  "Headphone",
 ];
