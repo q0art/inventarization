@@ -33,4 +33,8 @@ export const menuItems: MenuItem[] = [
     href: "/cases",
     text: "cases",
   },
+  {
+    href: "/coolers",
+    text: "coolers",
+  },
 ];

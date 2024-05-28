@@ -6,6 +6,7 @@ import { LazyRootLayout } from "@/app/layouts/root-layot";
 import { AuthProvider } from "@/app/providers/auth-provider";
 import { LazyBrandsPage } from "@/pages/brands";
 import { LazyCasesPage } from "@/pages/cases";
+import { LazyCoolersPage } from "@/pages/coolers";
 import { LazyCpusPage } from "@/pages/cpus";
 import { LazyDepartamentPage } from "@/pages/departaments";
 import { LazyGpusPage } from "@/pages/gpus";
@@ -89,6 +90,15 @@ const AppRouter: FC = () => {
               element={
                 <AuthProvider>
                   <LazyCasesPage />
+                </AuthProvider>
+              }
+            />
+
+            <Route
+              path="/coolers"
+              element={
+                <AuthProvider>
+                  <LazyCoolersPage />
                 </AuthProvider>
               }
             />

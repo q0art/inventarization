@@ -7,4 +7,5 @@ export const baseApiTags = [
   "Ssd",
   "Motherboard",
   "Case",
+  "Cooler",
 ];
