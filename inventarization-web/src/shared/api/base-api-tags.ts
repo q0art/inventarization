@@ -10,4 +10,5 @@ export const baseApiTags = [
   "Cooler",
   "Headphone",
   "Keyboard",
+  "Mouse",
 ];

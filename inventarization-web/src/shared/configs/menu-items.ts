@@ -45,4 +45,8 @@ export const menuItems: MenuItem[] = [
     href: "/keyboards",
     text: "keyboards",
   },
+  {
+    href: "/mouses",
+    text: "mouses",
+  },
 ];
