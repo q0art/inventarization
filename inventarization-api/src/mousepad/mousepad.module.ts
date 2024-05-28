@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
-import { MousepadService } from "./mousepad.service";
+
 import { MousepadController } from "./mousepad.controller";
+import { MousepadService } from "./mousepad.service";
 
 @Module({
   controllers: [MousepadController],
