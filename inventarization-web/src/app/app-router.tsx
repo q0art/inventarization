@@ -9,10 +9,11 @@ import { LazyCpusPage } from "@/pages/cpus";
 import { LazyDepartamentPage } from "@/pages/departaments";
 import { LazyGpusPage } from "@/pages/gpus";
 import { LazyNotFoundPage } from "@/pages/not-found-page";
+import { LazyRamsPage } from "@/pages/rams";
 import { LazyRootPage } from "@/pages/root-page";
 import { LazySignInPage } from "@/pages/sign-in-page";
 import { LazySignUpPage } from "@/pages/sign-up-page";
-import { LazyRamsPage } from "@/pages/rams";
+import { LazySsdsPage } from "@/pages/ssds";
 
 const AppRouter: FC = () => {
   return (
@@ -59,6 +60,15 @@ const AppRouter: FC = () => {
               element={
                 <AuthProvider>
                   <LazyRamsPage />
+                </AuthProvider>
+              }
+            />
+
+            <Route
+              path="/ssds"
+              element={
+                <AuthProvider>
+                  <LazySsdsPage />
                 </AuthProvider>
               }
             />

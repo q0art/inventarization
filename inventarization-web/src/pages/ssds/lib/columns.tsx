@@ -1,7 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Pencil, X } from "lucide-react";
 
-import { RamWithBrandName } from "@/entities/ram";
+import { SsdWithBrandName } from "@/entities/ssd";
 import { formatDate } from "@/shared/lib/format-date";
 import { Button } from "@/shared/ui/button";
 import { Checkbox } from "@/shared/ui/checkbox";
@@ -14,10 +14,10 @@ import {
   DialogTrigger,
 } from "@/shared/ui/dialog";
 
-import { UpdateRamForm } from "../ui/update-ram-form";
+import { UpdateSsdForm } from "../ui/update-ssd-form";
 
 const createColumns = (onDelete: (id: string) => void) => {
-  const _columns: ColumnDef<RamWithBrandName>[] = [
+  const _columns: ColumnDef<SsdWithBrandName>[] = [
     {
       id: "select",
       header: ({ table }) => (
@@ -141,9 +141,9 @@ const createColumns = (onDelete: (id: string) => void) => {
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle className="text-center">update ram</DialogTitle>
+                <DialogTitle className="text-center">update ssd</DialogTitle>
               </DialogHeader>
-              <UpdateRamForm
+              <UpdateSsdForm
                 id={row.getValue("id")}
                 model={row.getValue("model")}
                 manufacturerCode={row.getValue("manufacturerCode")}

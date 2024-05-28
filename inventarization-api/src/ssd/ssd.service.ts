@@ -9,20 +9,22 @@ export class SsdService {
 
   constructor(private readonly prismaService: PrismaService) {}
 
-  async getAllByModel(model: string) {
-    const ssds: Ssd[] = await this.prismaService.ssd
-      .findMany({
-        where: {
-          model: {
-            contains: model,
-            mode: "insensitive",
+  async getAll() {
+    const ssds = await this.prismaService.ssd.findMany({
+      select: {
+        id: true,
+        model: true,
+        manufacturerCode: true,
+        createdAt: true,
+        updatedAt: true,
+        brand: {
+          select: {
+            id: true,
+            name: true,
           },
         },
-      })
-      .catch((error) => {
-        this.logger.error(error);
-        return [];
-      });
+      },
+    });
 
     return ssds;
   }

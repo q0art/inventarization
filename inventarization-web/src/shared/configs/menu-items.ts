@@ -21,4 +21,8 @@ export const menuItems: MenuItem[] = [
     href: "/rams",
     text: "rams",
   },
+  {
+    href: "/ssds",
+    text: "ssds",
+  },
 ];

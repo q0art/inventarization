@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { useDeleteRamMutation, useGetAllRamsQuery } from "@/entities/ram";
+import { useDeleteSsdMutation, useGetAllSsdsQuery } from "@/entities/ssd";
 import { Alert, AlertTitle } from "@/shared/ui/alert";
 import { Button } from "@/shared/ui/button";
 import { DataTable } from "@/shared/ui/data-table";
@@ -14,13 +14,13 @@ import {
 import { Container } from "@/widgets/container/ui/container";
 
 import { createColumns } from "../lib/columns";
-import { CreateRamForm } from "./create-ram-form";
+import { CreateSsdForm } from "./create-ssd-form";
 
-const RamsPage: FC = () => {
-  const { data, isSuccess } = useGetAllRamsQuery();
-  const [deleteRam] = useDeleteRamMutation();
+const SsdsPage: FC = () => {
+  const { data, isSuccess } = useGetAllSsdsQuery();
+  const [deleteSsd] = useDeleteSsdMutation();
 
-  const columns = createColumns(deleteRam);
+  const columns = createColumns(deleteSsd);
 
   return (
     <Container>
@@ -29,14 +29,14 @@ const RamsPage: FC = () => {
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="outline" className="w-full">
-                create ram
+                create ssd
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle className="text-center">create ram</DialogTitle>
+                <DialogTitle className="text-center">create ssd</DialogTitle>
               </DialogHeader>
-              <CreateRamForm />
+              <CreateSsdForm />
             </DialogContent>
           </Dialog>
 
@@ -45,7 +45,7 @@ const RamsPage: FC = () => {
               <DataTable field="model" columns={columns} data={data} />
             ) : (
               <Alert>
-                <AlertTitle>rams dont exits yet 😭</AlertTitle>
+                <AlertTitle>ssds dont exits yet 😭</AlertTitle>
               </Alert>
             )
           ) : (
@@ -59,6 +59,6 @@ const RamsPage: FC = () => {
   );
 };
 
-RamsPage.displayName = "rams-page";
+SsdsPage.displayName = "ssds-page";
 
-export default RamsPage;
+export default SsdsPage;

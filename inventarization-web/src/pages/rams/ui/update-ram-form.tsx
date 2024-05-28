@@ -6,6 +6,7 @@ import { z } from "zod";
 
 import { useGetAllBrandsQuery } from "@/entities/brand";
 import { RamWithBrandName } from "@/entities/ram";
+import { useUpdateRamMutation } from "@/entities/ram";
 import { cn } from "@/shared/lib/cn";
 import { Button } from "@/shared/ui/button";
 import {
@@ -27,7 +28,6 @@ import { Input } from "@/shared/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 
 import { UpdateRamSchema } from "./../model/update-ram-schema";
-import { useUpdateRamMutation } from "@/entities/ram";
 
 interface Props
   extends Pick<RamWithBrandName, "model" | "manufacturerCode" | "brand"> {

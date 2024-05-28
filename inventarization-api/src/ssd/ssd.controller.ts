@@ -18,8 +18,8 @@ export class SsdController {
   constructor(private readonly ssdService: SsdService) {}
 
   @Get("")
-  async getAllByModel(@Query("model") model: string) {
-    return await this.ssdService.getAllByModel(model);
+  async getAllByModel() {
+    return await this.ssdService.getAll();
   }
 
   @Get(":id")
@@ -55,11 +55,12 @@ export class SsdController {
     const { model, manufacturerCode } = dto;
     const ssdByModel = await this.ssdService.getByModel(model);
 
-    if (ssdByModel) throw new ConflictException(`ssd already exist with model: ${model}`);
+    if (ssdByModel && ssdByModel.model !== dto.model)
+      throw new ConflictException(`ssd already exist with model: ${model}`);
 
     const ssdByManufacturerCode = await this.ssdService.getByManufacturerCode(manufacturerCode);
 
-    if (ssdByManufacturerCode)
+    if (ssdByManufacturerCode && ssdByManufacturerCode.manufacturerCode !== dto.manufacturerCode)
       throw new ConflictException(`ssd already exist with manufacturer code: ${manufacturerCode}`);
 
     return await this.ssdService.update(id, dto);

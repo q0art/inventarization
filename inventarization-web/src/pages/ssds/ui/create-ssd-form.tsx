@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { useGetAllBrandsQuery } from "@/entities/brand";
-import { useCreateRamMutation } from "@/entities/ram";
+import { useCreateSsdMutation } from "@/entities/ssd";
 import { cn } from "@/shared/lib/cn";
 import { Button } from "@/shared/ui/button";
 import {
@@ -26,14 +26,14 @@ import {
 import { Input } from "@/shared/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 
-import { CreateRamSchema } from "./../model/create-ram-schema";
+import { CreateSsdSchema } from "../model/create-ssd-schema";
 
-const CreateRamForm: FC = () => {
-  const [createRam, { isError, error }] = useCreateRamMutation();
+const CreateSsdForm: FC = () => {
+  const [createSsd, { isError, error }] = useCreateSsdMutation();
   const { data: brands } = useGetAllBrandsQuery();
 
   const form = useForm({
-    resolver: zodResolver(CreateRamSchema),
+    resolver: zodResolver(CreateSsdSchema),
     defaultValues: {
       model: "",
       manufacturerCode: "",
@@ -41,8 +41,8 @@ const CreateRamForm: FC = () => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof CreateRamSchema>) => {
-    await createRam(values);
+  const onSubmit = async (values: z.infer<typeof CreateSsdSchema>) => {
+    await createSsd(values);
 
     form.reset();
   };
@@ -61,7 +61,7 @@ const CreateRamForm: FC = () => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="unique ram model"
+                  placeholder="unique ssd model"
                   type="text"
                   className="relative"
                 />
@@ -79,7 +79,7 @@ const CreateRamForm: FC = () => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="unique ram manufacturer code"
+                  placeholder="unique ssd manufacturer code"
                   type="text"
                   className="relative"
                 />
@@ -165,6 +165,6 @@ const CreateRamForm: FC = () => {
   );
 };
 
-CreateRamForm.displayName = "create-ram-form";
+CreateSsdForm.displayName = "create-ssd-form";
 
-export { CreateRamForm };
+export { CreateSsdForm };

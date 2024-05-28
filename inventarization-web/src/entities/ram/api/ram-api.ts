@@ -1,10 +1,11 @@
+import { baseApi } from "@/shared/api/base-api.ts";
+
 import {
   CreateRamDto,
   Ram,
   RamWithBrandName,
   UpdateRamDto,
 } from "./../model/types";
-import { baseApi } from "@/shared/api/base-api.ts";
 
 export const ramApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

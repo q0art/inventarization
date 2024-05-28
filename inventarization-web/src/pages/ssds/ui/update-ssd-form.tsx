@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { useGetAllBrandsQuery } from "@/entities/brand";
-import { useCreateRamMutation } from "@/entities/ram";
+import { SsdWithBrandName, useUpdateSsdMutation } from "@/entities/ssd";
 import { cn } from "@/shared/lib/cn";
 import { Button } from "@/shared/ui/button";
 import {
@@ -26,23 +26,28 @@ import {
 import { Input } from "@/shared/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 
-import { CreateRamSchema } from "./../model/create-ram-schema";
+import { UpdateSsdSchema } from "../model/update-ssd-schema";
 
-const CreateRamForm: FC = () => {
-  const [createRam, { isError, error }] = useCreateRamMutation();
+interface Props
+  extends Pick<SsdWithBrandName, "model" | "manufacturerCode" | "brand"> {
+  id: string;
+}
+
+const UpdateSsdForm: FC<Props> = ({ id, model, manufacturerCode, brand }) => {
+  const [updateSsd, { isError, error }] = useUpdateSsdMutation();
   const { data: brands } = useGetAllBrandsQuery();
 
   const form = useForm({
-    resolver: zodResolver(CreateRamSchema),
+    resolver: zodResolver(UpdateSsdSchema),
     defaultValues: {
-      model: "",
-      manufacturerCode: "",
-      brandId: "",
+      model: model || "",
+      manufacturerCode: manufacturerCode || "",
+      brandId: brand.id || "",
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof CreateRamSchema>) => {
-    await createRam(values);
+  const onSubmit = async (values: z.infer<typeof UpdateSsdSchema>) => {
+    await updateSsd({ id, dto: values });
 
     form.reset();
   };
@@ -61,7 +66,7 @@ const CreateRamForm: FC = () => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="unique ram model"
+                  placeholder="unique ssd model"
                   type="text"
                   className="relative"
                 />
@@ -79,7 +84,7 @@ const CreateRamForm: FC = () => {
               <FormControl>
                 <Input
                   {...field}
-                  placeholder="unique ram manufacturer code"
+                  placeholder="unique ssd manufacturer code"
                   type="text"
                   className="relative"
                 />
@@ -152,19 +157,19 @@ const CreateRamForm: FC = () => {
           <div className="rounded-md border-[1px] border-neutral-500 bg-red-500 px-5 py-3 text-center">
             <span className="text-neutral-100">
               {/*@ts-ignore*/}
-              <span className="text-neutral-100">{error.data.message}</span>
+              {error?.data.message}
             </span>
           </div>
         )}
 
         <Button variant="outline" type="submit">
-          create
+          update
         </Button>
       </form>
     </Form>
   );
 };
 
-CreateRamForm.displayName = "create-ram-form";
+UpdateSsdForm.displayName = "update-ssd-form";
 
-export { CreateRamForm };
+export { UpdateSsdForm };
