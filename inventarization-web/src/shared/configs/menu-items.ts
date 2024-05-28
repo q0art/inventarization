@@ -41,4 +41,8 @@ export const menuItems: MenuItem[] = [
     href: "/headphones",
     text: "headphones",
   },
+  {
+    href: "/keyboards",
+    text: "keyboards",
+  },
 ];
