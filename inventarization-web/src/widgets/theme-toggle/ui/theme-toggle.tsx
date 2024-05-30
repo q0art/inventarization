@@ -11,7 +11,7 @@ interface Props {
   className?: string;
 }
 
-const ThemeToggle: FC<Props> = ({ className }) => {
+export const ThemeToggle: FC<Props> = ({ className }) => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
 
@@ -49,5 +49,3 @@ const ThemeToggle: FC<Props> = ({ className }) => {
 };
 
 ThemeToggle.displayName = "theme-toggle";
-
-export { ThemeToggle };

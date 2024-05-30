@@ -2,7 +2,6 @@ import { FC } from "react";
 
 import { SignOut } from "@/features/sign-out";
 import { cn } from "@/shared/lib/cn";
-import { MenuItem as MenuItemType } from "@/shared/types/menu-item";
 import {
   Command,
   CommandEmpty,
@@ -13,11 +12,11 @@ import {
 import { MenuItem } from "./menu-item";
 
 interface Props {
-  menuItems: MenuItemType[];
+  menuItems: { href: string; text: string }[];
   className?: string;
 }
 
-const MenuList: FC<Props> = ({ menuItems, className }) => {
+export const MenuList: FC<Props> = ({ menuItems, className }) => {
   return (
     <Command className={cn("flex h-fit flex-col gap-3 pb-6", className)}>
       <CommandInput placeholder="search..." />
@@ -33,5 +32,3 @@ const MenuList: FC<Props> = ({ menuItems, className }) => {
 };
 
 MenuList.displayName = "menu-list";
-
-export { MenuList };

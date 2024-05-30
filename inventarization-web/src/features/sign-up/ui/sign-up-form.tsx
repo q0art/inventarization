@@ -1,13 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Location, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 import { setAuth, useSignUpMutation } from "@/entities/auth";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
-import { RouterState } from "@/shared/types/router-state";
-import { Button } from "@/shared/ui/button.tsx";
+import { Button } from "@/shared/ui/button";
 import {
   Form,
   FormControl,
@@ -23,7 +22,6 @@ import { signUpSchema } from "./../model/sign-up-schema";
 const SignUpForm: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { state }: Location<RouterState> = useLocation();
 
   const [signUp, { isError, error }] = useSignUpMutation();
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +41,7 @@ const SignUpForm: FC = () => {
 
     if (accessToken) {
       dispatch(setAuth({ accessToken }));
-      navigate(state?.from?.pathname || "/", { replace: true });
+      navigate("/", { replace: true });
     }
   };
 

@@ -6,7 +6,7 @@ import {
   EMAIL_REGEX,
   PASSWORD_MAX_LENGTH,
   PASSWORD_MIN_LENGTH,
-} from "@/shared/constants";
+} from "@/shared/constants/input-fields";
 
 export const signUpSchema = z
   .object({

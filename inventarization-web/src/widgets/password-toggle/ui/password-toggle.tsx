@@ -10,7 +10,7 @@ interface Props {
   className?: string;
 }
 
-const PasswordToggle: FC<Props> = ({ isOpen, onClick, className }) => {
+export const PasswordToggle: FC<Props> = ({ isOpen, onClick, className }) => {
   return isOpen ? (
     <Eye
       onClick={onClick}
@@ -39,5 +39,3 @@ const PasswordToggle: FC<Props> = ({ isOpen, onClick, className }) => {
 };
 
 PasswordToggle.displayName = "password-toggle";
-
-export { PasswordToggle };

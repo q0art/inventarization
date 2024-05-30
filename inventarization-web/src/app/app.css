@@ -3,7 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    @apply box-border;
+  }
+
   body {
-    @apply box-border bg-neutral-100 font-inter font-medium text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100;
+    @apply bg-neutral-100 font-inter font-medium text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto max-w-[118.5rem] px-3 md:max-w-[117.5rem] md:px-5 xl:max-w-[116.5] xl:px-7;
   }
 }

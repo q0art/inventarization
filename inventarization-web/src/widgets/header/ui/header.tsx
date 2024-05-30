@@ -2,7 +2,6 @@ import { Home, List, X } from "lucide-react";
 import { FC } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { menuItems } from "@/shared/configs/menu-items";
 import { useUser } from "@/shared/hooks/use-user";
 import { cn } from "@/shared/lib/cn";
 import { Button, buttonVariants } from "@/shared/ui/button";
@@ -12,7 +11,6 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/shared/ui/sheet";
-import { Container } from "@/widgets/container";
 import { MenuList } from "@/widgets/menu/ui/menu-list";
 import { ThemeToggle } from "@/widgets/theme-toggle";
 
@@ -20,7 +18,14 @@ interface Props {
   className?: string;
 }
 
-const Header: FC<Props> = ({ className }) => {
+const menuItems = [
+  {
+    href: "",
+    text: "",
+  },
+];
+
+export const Header: FC<Props> = ({ className }) => {
   const user = useUser();
 
   const navigate = useNavigate();
@@ -36,7 +41,7 @@ const Header: FC<Props> = ({ className }) => {
         className,
       )}
     >
-      <Container>
+      <div className="container">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Sheet>
@@ -79,11 +84,9 @@ const Header: FC<Props> = ({ className }) => {
           </div>
           <ThemeToggle />
         </div>
-      </Container>
+      </div>
     </header>
   );
 };
 
 Header.displayName = "header";
-
-export { Header };

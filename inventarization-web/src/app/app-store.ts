@@ -14,7 +14,7 @@ import storage from "redux-persist/lib/storage";
 import { appReducer } from "@/app/app-reducer";
 import { authSlice } from "@/entities/auth";
 import { themeSlice } from "@/entities/theme";
-import { baseApi } from "@/shared/api/base-api.ts";
+import { baseApi } from "@/shared/api/base-api";
 
 const persistConfig = {
   key: "root",

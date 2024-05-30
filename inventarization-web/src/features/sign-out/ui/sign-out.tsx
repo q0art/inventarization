@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { removeAuth, useSignOutMutation } from "@/entities/auth";
 import { useAppDispatch } from "@/shared/hooks/use-app-dispatch";
 import { useAuth } from "@/shared/hooks/use-auth";
-import { cn } from "@/shared/lib/cn.ts";
-import { Button } from "@/shared/ui/button.tsx";
+import { cn } from "@/shared/lib/cn";
+import { Button } from "@/shared/ui/button";
 
 interface Props {
   className?: string;

@@ -1,13 +1,12 @@
 import { FC } from "react";
 
 import { cn } from "@/shared/lib/cn.ts";
-import { Container } from "@/widgets/container";
 
 interface Props {
   className?: string;
 }
 
-const Footer: FC<Props> = ({ className }) => {
+export const Footer: FC<Props> = ({ className }) => {
   const year = new Date().getFullYear();
 
   return (
@@ -17,15 +16,13 @@ const Footer: FC<Props> = ({ className }) => {
         className,
       )}
     >
-      <Container>
+      <div className="container">
         <div className="flex items-center justify-center">
           <span>&copy; {year}</span>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 };
 
 Footer.displayName = "footer";
-
-export { Footer };

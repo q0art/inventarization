@@ -2,16 +2,16 @@ import { FC } from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import { PersistGate as PersistProvider } from "redux-persist/integration/react";
 
-import AppRouter from "@/app/app-router.tsx";
-import { persistor, store } from "@/app/app-store.ts";
+import { persistor, store } from "@/app/app-store";
 import { ThemeProvider } from "@/app/providers/theme-provider";
+import { RouterProvider } from "@/app/providers/router-provider";
 
 export const AppProvider: FC = () => {
   return (
     <ReduxProvider store={store}>
       <PersistProvider persistor={persistor}>
         <ThemeProvider>
-          <AppRouter />
+          <RouterProvider />
         </ThemeProvider>
       </PersistProvider>
     </ReduxProvider>
@@ -19,5 +19,3 @@ export const AppProvider: FC = () => {
 };
 
 AppProvider.displayName = "app-provider";
-
-export default AppRouter;

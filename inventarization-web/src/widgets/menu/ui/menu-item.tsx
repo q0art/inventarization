@@ -12,7 +12,7 @@ interface Props {
   className?: string;
 }
 
-const MenuItem: FC<Props> = ({ href, text, className }) => {
+export const MenuItem: FC<Props> = ({ href, text, className }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -39,5 +39,3 @@ const MenuItem: FC<Props> = ({ href, text, className }) => {
 };
 
 MenuItem.displayName = "menu-item";
-
-export { MenuItem };
