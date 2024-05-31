@@ -6,8 +6,8 @@ import {
 } from "@reduxjs/toolkit/query";
 
 import { AccessToken } from "@/entities/auth";
-import { removeAuth, setAuth } from "@/entities/auth/model/auth-slice.ts";
-import { AppState } from "@/shared/types/app-state.ts";
+import { removeAuth, setAuth } from "@/entities/auth";
+import { AppState } from "@/shared/types/redux";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_BASE_URL,

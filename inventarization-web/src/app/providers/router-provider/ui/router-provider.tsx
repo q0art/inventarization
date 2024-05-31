@@ -1,4 +1,4 @@
-import { AppRoutesProps } from "@/shared/types/route";
+import { AppRoutesProps } from "@/shared/types/routes";
 import { PageLoader } from "@/widgets/page-loader/ui/page-loader";
 import { FC, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

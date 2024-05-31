@@ -1,4 +1,5 @@
-import { AppRoutes as R } from "@/shared/types/route";
+import { AppRoutes as R } from "@/shared/types/routes";
+import { MenuItem } from "@/shared/types/components";
 
 export const getRouteRoot = () => "";
 //
@@ -63,3 +64,74 @@ export const AppRouteByPath: Record<string, R> = {
   [getRouteCoolers()]: R.COOLERS,
   [getRouteCases()]: R.CASES,
 };
+
+export const menuItems: MenuItem[] = [
+  {
+    href: getRouteEmployees(),
+    text: R.EMPLOYEES,
+  },
+  {
+    href: getRouteWorkspaces(),
+    text: R.WORKSPACES,
+  },
+  {
+    href: getRouteDepartaments(),
+    text: R.DEPARTAMENTS,
+  },
+  {
+    href: getRouteBrand(),
+    text: R.BRANDS,
+  },
+  {
+    href: getRouteDesktops(),
+    text: R.DESKTOPS,
+  },
+  {
+    href: getRouteMonitors(),
+    text: R.MONITORS,
+  },
+  {
+    href: getRouteMouses(),
+    text: R.MOUSES,
+  },
+  {
+    href: getRouteMousePads(),
+    text: R.MOUSEPADS,
+  },
+  {
+    href: getRouteKeyboards(),
+    text: R.KEYBOARDS,
+  },
+  {
+    href: getRouteHeadphones(),
+    text: R.HEADPHONES,
+  },
+  {
+    href: getRouteCpus(),
+    text: R.CPUS,
+  },
+  {
+    href: getRouteGpus(),
+    text: R.GPUS,
+  },
+  {
+    href: getRouteMotherboards(),
+    text: R.MOTHERBOARDS,
+  },
+  {
+    href: getRouteRams(),
+    text: R.RAMS,
+  },
+  {
+    href: getRouteSsds(),
+    text: R.SSDS,
+  },
+  {
+    href: getRouteCoolers(),
+    text: R.COOLERS,
+  },
+  {
+    href: getRouteCases(),
+    text: R.CASES,
+  },
+];

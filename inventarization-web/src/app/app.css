@@ -4,7 +4,7 @@
 
 @layer base {
   * {
-    @apply box-border;
+    @apply scrollbar box-border;
   }
 
   body {
@@ -15,5 +15,19 @@
 @layer components {
   .container {
     @apply mx-auto max-w-[118.5rem] px-3 md:max-w-[117.5rem] md:px-5 xl:max-w-[116.5] xl:px-7;
+  }
+
+  .icon {
+    @apply h-4 w-4;
+  }
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    @apply w-[3px];
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-zinc-500;
   }
 }

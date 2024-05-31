@@ -16,8 +16,7 @@ export const MenuItem: FC<Props> = ({ href, text, className }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const disabled =
-    href.includes(location.pathname) && location.pathname !== "/";
+  const disabled = `/${href}` === location.pathname;
 
   const onClick = () => {
     navigate(href);

@@ -1,4 +1,4 @@
-import { AppRoutes, AppRoutesProps } from "@/shared/types/route";
+import { AppRoutes, AppRoutesProps } from "@/shared/types/routes";
 import {
   getRouteBrand,
   getRouteCases,
@@ -28,7 +28,20 @@ import {
 import { LazyRootPage } from "@/pages/root-page";
 import { LazySignInPage } from "@/pages/sign-in-page";
 import { LazySignUpPage } from "@/pages/sign-up-page";
-import NotFoundPage from "@/pages/not-found-page/ui/not-found-page";
+import { LazyNotFoundPage } from "@/pages/not-found-page";
+import { LazyBrandsPage } from "@/pages/brands";
+import { LazyCasesPage } from "@/pages/cases";
+import { LazyCoolersPage } from "@/pages/coolers";
+import { LazySsdsPage } from "@/pages/ssds";
+import { LazyRamsPage } from "@/pages/rams";
+import { LazyMotherboardsPage } from "@/pages/motherboards";
+import { LazyGpusPage } from "@/pages/gpus";
+import { LazyCpusPage } from "@/pages/cpus";
+import { LazyHeadphonesPage } from "@/pages/headphones";
+import { LazyKeyboardsPage } from "@/pages/keyboards";
+import { LazyMousepadsPage } from "@/pages/mousepads";
+import { LazyMousePage } from "@/pages/mouses";
+import { LazyMonitorsPage } from "@/pages/monitors";
 
 type R = Partial<Record<AppRoutes, AppRoutesProps>>;
 
@@ -62,7 +75,7 @@ export const routesWithRootLayout: R = {
   },
   [AppRoutes.BRANDS]: {
     path: getRouteBrand(),
-    element: null,
+    element: <LazyBrandsPage />,
   },
   //
   [AppRoutes.DESKTOP]: {
@@ -76,57 +89,57 @@ export const routesWithRootLayout: R = {
   //
   [AppRoutes.MONITORS]: {
     path: getRouteMonitors(),
-    element: null,
+    element: <LazyMonitorsPage />,
   },
   [AppRoutes.MOUSES]: {
     path: getRouteMouses(),
-    element: null,
+    element: <LazyMousePage />,
   },
   [AppRoutes.MOUSEPADS]: {
     path: getRouteMousePads(),
-    element: null,
+    element: <LazyMousepadsPage />,
   },
   [AppRoutes.KEYBOARDS]: {
     path: getRouteKeyboards(),
-    element: null,
+    element: <LazyKeyboardsPage />,
   },
   [AppRoutes.HEADPHONES]: {
     path: getRouteHeadphones(),
-    element: null,
+    element: <LazyHeadphonesPage />,
   },
   //
   [AppRoutes.CPUS]: {
     path: getRouteCpus(),
-    element: null,
+    element: <LazyCpusPage />,
   },
   [AppRoutes.GPUS]: {
     path: getRouteGpus(),
-    element: null,
+    element: <LazyGpusPage />,
   },
   [AppRoutes.MOTHERBOARDS]: {
     path: getRouteMotherboards(),
-    element: null,
+    element: <LazyMotherboardsPage />,
   },
   [AppRoutes.RAMS]: {
     path: getRouteRams(),
-    element: null,
+    element: <LazyRamsPage />,
   },
   [AppRoutes.SSDS]: {
     path: getRouteSsds(),
-    element: null,
+    element: <LazySsdsPage />,
   },
   [AppRoutes.COOLERS]: {
     path: getRouteCoolers(),
-    element: null,
+    element: <LazyCoolersPage />,
   },
   [AppRoutes.CASES]: {
     path: getRouteCases(),
-    element: null,
+    element: <LazyCasesPage />,
   },
   //
   [AppRoutes.NOT_FOUND]: {
     path: "*",
-    element: <NotFoundPage />,
+    element: <LazyNotFoundPage />,
   },
 };
 
