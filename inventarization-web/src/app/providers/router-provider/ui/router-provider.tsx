@@ -1,5 +1,4 @@
 import { AppRoutesProps } from "@/shared/types/routes";
-import { PageLoader } from "@/widgets/page-loader/ui/page-loader";
 import { FC, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "@/app/providers/auth-provider";
@@ -9,9 +8,7 @@ import { LazyAuthLayout } from "@/app/layouts/auth-layout";
 
 export const RouterProvider: FC = () => {
   const render = (route: AppRoutesProps) => {
-    const element = (
-      <Suspense fallback={<PageLoader />}>{route.element}</Suspense>
-    );
+    const element = <Suspense>{route.element}</Suspense>;
 
     return (
       <Route

@@ -1,25 +1,25 @@
-import { ComponentWithBrand } from "@/entities/component";
 import { Alert, AlertTitle } from "@/shared/ui/alert";
 import { DataTable } from "@/shared/ui/data-table";
 import { ColumnDef } from "@tanstack/react-table";
-import { FC } from "react";
 
-interface Props {
+interface Props<T> {
   isSuccess: boolean;
-  data: ComponentWithBrand[];
-  columns: ColumnDef<ComponentWithBrand, unknown>[];
+  field: keyof T;
+  data: T[];
+  columns: ColumnDef<T, unknown>[];
   label: string;
 }
 
-export const DataTableWrapper: FC<Props> = ({
+export const DataTableWrapper = <T,>({
   isSuccess,
+  field,
   data,
   columns,
   label,
-}) => {
+}: Props<T>) => {
   return isSuccess ? (
     data?.length ? (
-      <DataTable field="model" columns={columns} data={data} />
+      <DataTable field={field} data={data} columns={columns} />
     ) : (
       <Alert>
         <AlertTitle className="text-center">

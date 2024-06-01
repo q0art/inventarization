@@ -5,7 +5,7 @@ import {
   useUpdateRamMutation,
 } from "@/entities/component";
 import { CreateComponentForm, createTableColumns } from "@/features/component";
-import { DataTableWrapper } from "@/features/component";
+import { DataTableWrapper } from "@/widgets/data-table-wrapper";
 import { DialogWrapper } from "@/widgets/dialog-wrapper";
 import { FC } from "react";
 
@@ -38,6 +38,7 @@ const RamsPage: FC = () => {
 
           <DataTableWrapper
             isSuccess={isSuccess}
+            field={"model"}
             data={data || []}
             columns={columns}
             label={"rams"}
