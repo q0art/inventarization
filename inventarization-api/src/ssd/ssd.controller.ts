@@ -53,14 +53,18 @@ export class SsdController {
     if (!ssdById) throw new BadRequestException(`ssd not found by id`);
 
     const { model, manufacturerCode } = dto;
+
     const ssdByModel = await this.ssdService.getByModel(model);
 
-    if (ssdByModel && ssdByModel.model !== dto.model)
+    if (ssdById.model !== model && ssdByModel?.model === model)
       throw new ConflictException(`ssd already exist with model: ${model}`);
 
     const ssdByManufacturerCode = await this.ssdService.getByManufacturerCode(manufacturerCode);
 
-    if (ssdByManufacturerCode && ssdByManufacturerCode.manufacturerCode !== dto.manufacturerCode)
+    if (
+      ssdById.manufacturerCode !== manufacturerCode &&
+      ssdByManufacturerCode?.manufacturerCode === manufacturerCode
+    )
       throw new ConflictException(`ssd already exist with manufacturer code: ${manufacturerCode}`);
 
     return await this.ssdService.update(id, dto);

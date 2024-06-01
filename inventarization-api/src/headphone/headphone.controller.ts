@@ -59,15 +59,15 @@ export class HeadphoneController {
 
     const headphoneByModel = await this.headphoneService.getByModel(model);
 
-    if (headphoneByModel && headphoneByModel.model !== model)
+    if (headphoneById.model !== model && headphoneByModel?.model === model)
       throw new ConflictException(`headphone already exist with model: ${model}`);
 
     const headphoneByManufacturerCode =
       await this.headphoneService.getByManufacturerCode(manufacturerCode);
 
     if (
-      headphoneByManufacturerCode &&
-      headphoneByManufacturerCode.manufacturerCode !== dto.manufacturerCode
+      headphoneById.manufacturerCode !== manufacturerCode &&
+      headphoneByManufacturerCode?.manufacturerCode === manufacturerCode
     )
       throw new ConflictException(
         `headphone already exist with manufacturer code: ${manufacturerCode}`,

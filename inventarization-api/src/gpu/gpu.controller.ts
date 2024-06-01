@@ -53,14 +53,18 @@ export class GpuController {
     if (!gpuById) throw new BadRequestException(`gpu not found by id`);
 
     const { model, manufacturerCode } = dto;
+
     const gpuByModel = await this.gpuService.getByModel(model);
 
-    if (gpuByModel && gpuByModel.model !== dto.model)
+    if (gpuById.model !== model && gpuByModel?.model === model)
       throw new ConflictException(`gpu already exist with model: ${model}`);
 
     const gpuByManufacturerCode = await this.gpuService.getByManufacturerCode(manufacturerCode);
 
-    if (gpuByManufacturerCode && gpuByManufacturerCode.manufacturerCode !== dto.manufacturerCode)
+    if (
+      gpuById.manufacturerCode !== manufacturerCode &&
+      gpuByManufacturerCode?.manufacturerCode === manufacturerCode
+    )
       throw new ConflictException(`gpu already exist with manufacturer code: ${manufacturerCode}`);
 
     return await this.gpuService.update(id, dto);

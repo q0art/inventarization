@@ -25,7 +25,7 @@ import { PrismaModule } from "./prisma/prisma.module";
 import { RamModule } from "./ram/ram.module";
 import { SsdModule } from "./ssd/ssd.module";
 import { UserModule } from "./user/user.module";
-import { WorkspaceModule } from "./workspace/workspace.module";
+// import { WorkspaceModule } from "./workspace/workspace.module";
 
 @Module({
   imports: [
@@ -38,7 +38,7 @@ import { WorkspaceModule } from "./workspace/workspace.module";
     AuthModule,
     DepartamentModule,
     EmployeeModule,
-    WorkspaceModule,
+    // WorkspaceModule,
     BrandModule,
     CpuModule,
     GpuModule,

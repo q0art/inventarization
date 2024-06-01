@@ -53,14 +53,18 @@ export class CaseController {
     if (!caseById) throw new BadRequestException(`case not found by id`);
 
     const { model, manufacturerCode } = dto;
+
     const caseByModel = await this.caseService.getByModel(model);
 
-    if (caseByModel && caseByModel.model !== dto.model)
+    if (caseById.model !== model && caseByModel?.model === model)
       throw new ConflictException(`case already exist with model: ${model}`);
 
     const caseByManufacturerCode = await this.caseService.getByManufacturerCode(manufacturerCode);
 
-    if (caseByManufacturerCode && caseByManufacturerCode.manufacturerCode !== dto.manufacturerCode)
+    if (
+      caseById.manufacturerCode !== manufacturerCode &&
+      caseByManufacturerCode?.manufacturerCode === manufacturerCode
+    )
       throw new ConflictException(`case already exist with manufacturer code: ${manufacturerCode}`);
 
     return await this.caseService.update(id, dto);

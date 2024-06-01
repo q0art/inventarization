@@ -50,7 +50,8 @@ export class BrandController {
     const { name } = dto;
     const brandByName = await this.brandService.getByName(name);
 
-    if (brandByName) throw new ConflictException(`brand already exist with name: ${name}`);
+    if (brandById.name !== name && brandByName?.name === name)
+      throw new ConflictException(`brand already exist with name: ${name}`);
 
     return await this.brandService.update(id, dto);
   }

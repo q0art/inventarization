@@ -6,6 +6,7 @@ import {
   Controller,
   Delete,
   Get,
+  Logger,
   Param,
   Patch,
   Post,
@@ -15,6 +16,8 @@ import { MotherboardService } from "./motherboard.service";
 
 @Controller("motherboard")
 export class MotherboardController {
+  private logger = new Logger(MotherboardController.name);
+
   constructor(private readonly motherboardService: MotherboardService) {}
 
   @Get("")
@@ -57,17 +60,18 @@ export class MotherboardController {
     if (!motherboardById) throw new BadRequestException(`motherboard not found by id`);
 
     const { model, manufacturerCode } = dto;
+
     const motherboardByModel = await this.motherboardService.getByModel(model);
 
-    if (motherboardByModel && motherboardByModel.model !== dto.model)
+    if (motherboardById.model !== model && motherboardByModel?.model === model)
       throw new ConflictException(`motherboard already exist with model: ${model}`);
 
     const motherboardByManufacturerCode =
       await this.motherboardService.getByManufacturerCode(manufacturerCode);
 
     if (
-      motherboardByManufacturerCode &&
-      motherboardByManufacturerCode.manufacturerCode !== dto.manufacturerCode
+      motherboardById.manufacturerCode !== manufacturerCode &&
+      motherboardByManufacturerCode?.manufacturerCode === manufacturerCode
     )
       throw new ConflictException(
         `motherboard already exist with manufacturer code: ${manufacturerCode}`,

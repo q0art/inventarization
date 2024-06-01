@@ -58,15 +58,15 @@ export class KeyboardController {
 
     const keyboardByModel = await this.keyboardService.getByModel(model);
 
-    if (keyboardByModel && keyboardByModel.model !== model)
+    if (keyboardById.model !== model && keyboardByModel?.model === model)
       throw new ConflictException(`keyboard already exist with model: ${model}`);
 
     const keyboardByManufacturerCode =
       await this.keyboardService.getByManufacturerCode(manufacturerCode);
 
     if (
-      keyboardByManufacturerCode &&
-      keyboardByManufacturerCode.manufacturerCode !== dto.manufacturerCode
+      keyboardById.manufacturerCode !== manufacturerCode &&
+      keyboardByManufacturerCode?.manufacturerCode === manufacturerCode
     )
       throw new ConflictException(
         `keyboard already exist with manufacturer code: ${manufacturerCode}`,

@@ -58,15 +58,15 @@ export class MonitorController {
 
     const monitorByModel = await this.monitorService.getByModel(model);
 
-    if (monitorByModel && monitorByModel.model !== model)
+    if (monitorById.model !== model && monitorByModel?.model === model)
       throw new ConflictException(`monitor already exist with model: ${model}`);
 
     const monitorByManufacturerCode =
       await this.monitorService.getByManufacturerCode(manufacturerCode);
 
     if (
-      monitorByManufacturerCode &&
-      monitorByManufacturerCode.manufacturerCode !== dto.manufacturerCode
+      monitorById.manufacturerCode !== manufacturerCode &&
+      monitorByManufacturerCode?.manufacturerCode === manufacturerCode
     )
       throw new ConflictException(
         `monitor already exist with manufacturer code: ${manufacturerCode}`,

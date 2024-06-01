@@ -58,15 +58,15 @@ export class CoolerController {
 
     const coolerByModel = await this.coolerService.getByModel(model);
 
-    if (coolerByModel && coolerByModel.model !== model)
+    if (coolerById.model !== model && coolerByModel?.model === model)
       throw new ConflictException(`cooler already exist with model: ${model}`);
 
     const coolerByManufacturerCode =
       await this.coolerService.getByManufacturerCode(manufacturerCode);
 
     if (
-      coolerByManufacturerCode &&
-      coolerByManufacturerCode.manufacturerCode !== dto.manufacturerCode
+      coolerById.manufacturerCode !== manufacturerCode &&
+      coolerByManufacturerCode?.manufacturerCode === manufacturerCode
     )
       throw new ConflictException(
         `cooler already exist with manufacturer code: ${manufacturerCode}`,

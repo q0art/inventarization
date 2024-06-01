@@ -57,14 +57,14 @@ export class MouseController {
 
     const mouseByModel = await this.mouseService.getByModel(model);
 
-    if (mouseByModel && mouseByModel.model !== model)
+    if (mouseById.model !== model && mouseByModel?.model === model)
       throw new ConflictException(`mouse already exist with model: ${model}`);
 
     const mouseByManufacturerCode = await this.mouseService.getByManufacturerCode(manufacturerCode);
 
     if (
-      mouseByManufacturerCode &&
-      mouseByManufacturerCode.manufacturerCode !== dto.manufacturerCode
+      mouseById.manufacturerCode !== manufacturerCode &&
+      mouseByManufacturerCode?.manufacturerCode === manufacturerCode
     )
       throw new ConflictException(
         `mouse already exist with manufacturer code: ${manufacturerCode}`,

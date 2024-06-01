@@ -53,14 +53,18 @@ export class RamController {
     if (!ramById) throw new BadRequestException(`ram not found by id`);
 
     const { model, manufacturerCode } = dto;
+
     const ramByModel = await this.ramService.getByModel(model);
 
-    if (ramByModel && ramByModel.model !== dto.model)
+    if (ramById.model !== model && ramByModel?.model === model)
       throw new ConflictException(`ram already exist with model: ${model}`);
 
     const ramByManufacturerCode = await this.ramService.getByManufacturerCode(manufacturerCode);
 
-    if (ramByManufacturerCode && ramByManufacturerCode.manufacturerCode !== dto.manufacturerCode)
+    if (
+      ramById.manufacturerCode !== manufacturerCode &&
+      ramByManufacturerCode?.manufacturerCode === manufacturerCode
+    )
       throw new ConflictException(`ram already exist with manufacturer code: ${manufacturerCode}`);
 
     return await this.ramService.update(id, dto);

@@ -51,7 +51,7 @@ export class DepartamentController {
     const { name } = dto;
     const departamentByName = await this.departamentService.getByName(name);
 
-    if (departamentByName)
+    if (departamentById.name !== name && departamentByName?.name === name)
       throw new ConflictException(`departamnet already exist with name: ${name}`);
 
     return await this.departamentService.update(id, dto);

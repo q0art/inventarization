@@ -20,18 +20,28 @@
     "paths": {
       "@app": ["./src/app.module.ts"],
       "@app/shared/*": ["libs/shared/src/*"],
-      "@prisma/*": ["./src/prisma/*"],
       //
       "@auth/*": ["./src/auth/*"],
-      "@user/*": ["./src/user/*"],
-      "@employee/*": ["./src/employee/*"],
-      "@departament/*": ["./src/departament/*"],
-      "@workspace/*": ["./src/workspace/*"],
       "@brand/*": ["./src/brand/*"],
+      "@case/*": ["./src/case/*"],
+      "@cooler/*": ["./src/cooler/*"],
       "@cpu/*": ["src/cpu/*"],
+      "@departament/*": ["./src/departament/*"],
+      "@desktop/*": ["./src/desktop/*"],
+      "@employee/*": ["./src/employee/*"],
       "@gpu/*": ["./src/gpu/*"],
+      "@headphone/*": ["./src/headphone/*"],
+      "@keyboard/*": ["./src/keyboard/*"],
+      "@laptop/*": ["./src/laptop/*"],
+      "@monitor/*": ["./src/monitor/*"],
+      "@motherboard/*": ["./src/motherboard/*"],
+      "@mouse/*": ["./src/mouse/*"],
+      "@mousepad/*": ["./src/mousepad/*"],
+      "@prisma/*": ["./src/prisma/*"],
       "@ram/*": ["./src/ram/*"],
-      "@ssd/*": ["./src/ssd/*"]
+      "@ssd/*": ["./src/ssd/*"],
+      "@user/*": ["./src/user/*"],
+      "@workspace/*": ["./src/workspace/*"]
     }
   }
 }

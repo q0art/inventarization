@@ -55,12 +55,15 @@ export class CpuController {
 
     const cpuByModel = await this.cpuService.getByModel(model);
 
-    if (cpuByModel && cpuByModel.model !== model)
+    if (cpuById.model !== model && cpuByModel?.model === model)
       throw new ConflictException(`cpu already exist with model: ${model}`);
 
     const cpuByManufacturerCode = await this.cpuService.getByManufacturerCode(manufacturerCode);
 
-    if (cpuByManufacturerCode && cpuByManufacturerCode.manufacturerCode !== dto.manufacturerCode)
+    if (
+      cpuById.manufacturerCode !== manufacturerCode &&
+      cpuByManufacturerCode?.manufacturerCode === manufacturerCode
+    )
       throw new ConflictException(`cpu already exist with manufacturer code: ${manufacturerCode}`);
 
     return await this.cpuService.update(id, dto);

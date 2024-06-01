@@ -58,15 +58,15 @@ export class MousepadController {
 
     const mousepadByModel = await this.mousepadService.getByModel(model);
 
-    if (mousepadByModel && mousepadByModel.model !== model)
+    if (mousepadById.model !== model && mousepadByModel?.model === model)
       throw new ConflictException(`mousepad already exist with model: ${model}`);
 
     const mousepadByManufacturerCode =
       await this.mousepadService.getByManufacturerCode(manufacturerCode);
 
     if (
-      mousepadByManufacturerCode &&
-      mousepadByManufacturerCode.manufacturerCode !== dto.manufacturerCode
+      mousepadById.manufacturerCode !== manufacturerCode &&
+      mousepadByManufacturerCode?.manufacturerCode === manufacturerCode
     )
       throw new ConflictException(
         `mousepad already exist with manufacturer code: ${manufacturerCode}`,
