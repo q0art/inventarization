@@ -5,8 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { useGetAllBrandsQuery } from "@/entities/brand";
-import { ComponentWithBrand, UpdateComponentDto } from "@/entities/component";
-import { CreateComponentSchema } from "@/features/component";
+import { UpdateComponentSchema } from "@/features/component";
 import { cn } from "@/shared/lib/cn";
 import { Button } from "@/shared/ui/button";
 import {
@@ -26,6 +25,7 @@ import {
 } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
+import { ComponentWithBrand, UpdateComponentDto } from "@/entities/component";
 
 interface Props
   extends Pick<ComponentWithBrand, "model" | "manufacturerCode" | "brand"> {
@@ -47,7 +47,7 @@ export const UpdateComponentForm: FC<Props> = ({
   const { data: brands } = useGetAllBrandsQuery();
 
   const form = useForm({
-    resolver: zodResolver(CreateComponentSchema),
+    resolver: zodResolver(UpdateComponentSchema),
     defaultValues: {
       model: model || "",
       manufacturerCode: manufacturerCode || "",
@@ -55,7 +55,7 @@ export const UpdateComponentForm: FC<Props> = ({
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof CreateComponentSchema>) => {
+  const onSubmit = async (values: z.infer<typeof UpdateComponentSchema>) => {
     await onUpdate({ id, dto: values });
 
     form.reset();
@@ -123,7 +123,7 @@ export const UpdateComponentForm: FC<Props> = ({
                         ? brands?.find((brand) => brand.id === field.value)
                             ?.name
                         : "select brand"}
-                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                      <ChevronsUpDown className="icon ml-2 shrink-0 opacity-50" />
                     </Button>
                   </FormControl>
                 </PopoverTrigger>
@@ -143,7 +143,7 @@ export const UpdateComponentForm: FC<Props> = ({
                           >
                             <Check
                               className={cn(
-                                "mr-2 h-4 w-4",
+                                "icon mr-2",
                                 brand.id === field.value
                                   ? "opacity-100"
                                   : "opacity-0",
@@ -165,8 +165,8 @@ export const UpdateComponentForm: FC<Props> = ({
         {isError && (
           <div className="rounded-md border-[1px] border-neutral-500 bg-red-500 px-5 py-3 text-center">
             <span className="text-neutral-100">
-              {/*@ts-ignore*/}
-              {error?.data.message}
+              {/* @ts-ignore */}
+              {error?.data?.message || "something went wrong 🤕"}
             </span>
           </div>
         )}

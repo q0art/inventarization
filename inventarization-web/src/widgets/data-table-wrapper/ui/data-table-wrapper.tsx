@@ -5,7 +5,7 @@ import { ColumnDef } from "@tanstack/react-table";
 interface Props<T> {
   isSuccess: boolean;
   field: keyof T;
-  data: T[];
+  data: T[] | undefined;
   columns: ColumnDef<T, unknown>[];
   label: string;
 }

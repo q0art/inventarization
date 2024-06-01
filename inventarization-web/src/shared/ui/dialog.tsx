@@ -15,8 +15,6 @@ const DialogTrigger = DialogPrimitive.Trigger;
 
 const DialogPortal = DialogPrimitive.Portal;
 
-const DialogClose = DialogPrimitive.Close;
-
 const DialogOverlay = forwardRef<
   ElementRef<typeof DialogPrimitive.Overlay>,
   ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
@@ -48,7 +46,7 @@ const DialogContent = forwardRef<
     >
       {children}
       <DialogPrimitive.Close className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-neutral-100 data-[state=open]:text-neutral-500 dark:data-[state=open]:bg-neutral-800 dark:data-[state=open]:text-neutral-400">
-        <X className="h-4 w-4" />
+        <X className="icon" />
       </DialogPrimitive.Close>
     </DialogPrimitive.Content>
   </DialogPortal>
@@ -112,7 +110,6 @@ DialogDescription.displayName = DialogPrimitive.Description.displayName;
 
 export {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,

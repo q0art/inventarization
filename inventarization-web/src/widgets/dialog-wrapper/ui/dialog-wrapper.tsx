@@ -16,7 +16,7 @@ interface Props {
 export const DialogWrapper: FC<Props> = ({ label, children }) => {
   return (
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <Button variant="outline" className="w-full">
           {label}
         </Button>

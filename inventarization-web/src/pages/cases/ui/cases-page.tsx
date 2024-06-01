@@ -10,7 +10,7 @@ import { DialogWrapper } from "@/widgets/dialog-wrapper";
 import { FC } from "react";
 
 const CasesPage: FC = () => {
-  const { data, isSuccess } = useGetAllCasesQuery();
+  const { data: cases, isSuccess } = useGetAllCasesQuery();
   const [onCreate, { isError: isErrorCreate, error: errorCreate }] =
     useCreateCaseMutation();
   const [onUpdate, { isError: isErrorUpdate, error: errorUpdate }] =
@@ -28,7 +28,7 @@ const CasesPage: FC = () => {
     <div className="container">
       <div className="py-3">
         <div className="flex flex-col items-center justify-center gap-3">
-          <DialogWrapper label="create">
+          <DialogWrapper label="create case">
             <CreateComponentForm
               isError={isErrorCreate}
               error={errorCreate}
@@ -39,7 +39,7 @@ const CasesPage: FC = () => {
           <DataTableWrapper
             isSuccess={isSuccess}
             field={"model"}
-            data={data || []}
+            data={cases}
             columns={columns}
             label={"cases"}
           />
