@@ -50,7 +50,7 @@ export const CreateComponentForm: FC<Props> = ({
   });
 
   const onSubmit = async (values: z.infer<typeof CreateComponentSchema>) => {
-    await onCreate(values);
+    onCreate(values);
 
     form.reset();
   };

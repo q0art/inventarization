@@ -42,6 +42,9 @@ import { LazyKeyboardsPage } from "@/pages/keyboards";
 import { LazyMousepadsPage } from "@/pages/mousepads";
 import { LazyMousePage } from "@/pages/mouses";
 import { LazyMonitorsPage } from "@/pages/monitors";
+import { LazyDepartamentsPage } from "@/pages/departaments";
+import { LazyDesktopsPage } from "@/pages/desktops/ui/lazy-desktops-page";
+import { LazyDesktopPage } from "@/pages/desktop";
 
 type R = Partial<Record<AppRoutes, AppRoutesProps>>;
 
@@ -71,7 +74,7 @@ export const routesWithRootLayout: R = {
   //
   [AppRoutes.DEPARTAMENTS]: {
     path: getRouteDepartaments(),
-    element: null,
+    element: <LazyDepartamentsPage />,
   },
   [AppRoutes.BRANDS]: {
     path: getRouteBrand(),
@@ -80,11 +83,11 @@ export const routesWithRootLayout: R = {
   //
   [AppRoutes.DESKTOP]: {
     path: getRouteDesktopById(":id"),
-    element: null,
+    element: <LazyDesktopPage />,
   },
   [AppRoutes.DESKTOPS]: {
     path: getRouteDesktops(),
-    element: null,
+    element: <LazyDesktopsPage />,
   },
   //
   [AppRoutes.MONITORS]: {

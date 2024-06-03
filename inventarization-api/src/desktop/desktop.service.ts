@@ -71,67 +71,62 @@ export class DesktopService {
   }
 
   async getById(id: string) {
-    const desktop: Desktop = await this.prismaService.desktop
-      .findUnique({
-        where: { id },
-        select: {
-          id: true,
-          name: true,
-          cpu: {
-            select: {
-              id: true,
-              model: true,
-              manufacturerCode: true,
-            },
-          },
-          gpu: {
-            select: {
-              id: true,
-              model: true,
-              manufacturerCode: true,
-            },
-          },
-          motherboard: {
-            select: {
-              id: true,
-              model: true,
-              manufacturerCode: true,
-            },
-          },
-          ram: {
-            select: {
-              id: true,
-              model: true,
-              manufacturerCode: true,
-            },
-          },
-          ssd: {
-            select: {
-              id: true,
-              model: true,
-              manufacturerCode: true,
-            },
-          },
-          cooler: {
-            select: {
-              id: true,
-              model: true,
-              manufacturerCode: true,
-            },
-          },
-          case: {
-            select: {
-              id: true,
-              model: true,
-              manufacturerCode: true,
-            },
+    const desktop = await this.prismaService.desktop.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        name: true,
+        cpu: {
+          select: {
+            id: true,
+            model: true,
+            manufacturerCode: true,
           },
         },
-      })
-      .catch((error) => {
-        this.logger.error(error);
-        return null;
-      });
+        gpu: {
+          select: {
+            id: true,
+            model: true,
+            manufacturerCode: true,
+          },
+        },
+        motherboard: {
+          select: {
+            id: true,
+            model: true,
+            manufacturerCode: true,
+          },
+        },
+        ram: {
+          select: {
+            id: true,
+            model: true,
+            manufacturerCode: true,
+          },
+        },
+        ssd: {
+          select: {
+            id: true,
+            model: true,
+            manufacturerCode: true,
+          },
+        },
+        cooler: {
+          select: {
+            id: true,
+            model: true,
+            manufacturerCode: true,
+          },
+        },
+        case: {
+          select: {
+            id: true,
+            model: true,
+            manufacturerCode: true,
+          },
+        },
+      },
+    });
 
     return desktop;
   }

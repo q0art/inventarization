@@ -1,14 +1,14 @@
-export type Departament = {
+export interface Departament {
   id: string;
   name: string;
   createdAt: string;
   updatedAt: string;
-};
+}
 
-export type CreateDepartamentDto = {
+export interface CreateDepartamentDto {
   name: string;
-};
+}
 
-export type UpdateDepartamentDto = {
+export interface UpdateDepartamentDto {
   name: string;
-};
+}

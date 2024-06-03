@@ -34,4 +34,4 @@ export const DataTableWrapper = <T,>({
   );
 };
 
-DataTableWrapper.displayName = "data-table-wrapper";
+DataTableWrapper.displayName = "data-wrapper";
