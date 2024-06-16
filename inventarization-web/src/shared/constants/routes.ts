@@ -3,8 +3,8 @@ import { AppRoutes as R } from "@shared/types/routes";
 
 export const getRouteRoot = () => "";
 //
-export const getRouteSignIn = () => "sign-in";
-export const getRouteSignUp = () => "sign-up";
+export const getRouteSignIn = () => "auth/sign-in";
+export const getRouteSignUp = () => "auth/sign-up";
 //
 export const getRouteEmployees = () => "employees";
 export const getRouteEmployeeById = (id: string) => `employees/${id}`;

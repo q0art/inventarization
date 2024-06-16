@@ -1,4 +1,4 @@
-import { Theme, ThemeState } from "@entities/theme/model/types.ts";
+import { Theme, ThemeState } from "@app/providers/theme-provider/model/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: ThemeState = {

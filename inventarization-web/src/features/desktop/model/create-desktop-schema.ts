@@ -1,7 +1,4 @@
-import {
-  SMALL_FIELD_MAX_LENGTH,
-  SMALL_FIELD_MIN_LENGTH,
-} from "@shared/constants/input-fields";
+import { SMALL_FIELD } from "@shared/constants/inputs";
 import { z } from "zod";
 
 export const CreateDesktopSchema = z.object({
@@ -10,11 +7,11 @@ export const CreateDesktopSchema = z.object({
     .refine((field) => field.trim().length > 0, {
       message: "desktop name is required",
     })
-    .refine((field) => field.trim().length >= SMALL_FIELD_MIN_LENGTH, {
-      message: `desktop name min length is ${SMALL_FIELD_MIN_LENGTH}`,
+    .refine((field) => field.trim().length >= SMALL_FIELD.MIN_LENGTH, {
+      message: `desktop name min length is ${SMALL_FIELD.MIN_LENGTH}`,
     })
-    .refine((field) => field.trim().length <= SMALL_FIELD_MAX_LENGTH, {
-      message: `desktop name max length is ${SMALL_FIELD_MAX_LENGTH}`,
+    .refine((field) => field.trim().length <= SMALL_FIELD.MAX_LENGTH, {
+      message: `desktop name max length is ${SMALL_FIELD.MAX_LENGTH}`,
     }),
 
   cpuId: z.string().refine((field) => field.trim().length > 0, {

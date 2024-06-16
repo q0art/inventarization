@@ -1,15 +1,39 @@
+import { Box, Container, Stack } from "@mui/material";
+import { Header } from "@widgets/header";
+import { Main } from "@widgets/main";
+import { Sidebar } from "@widgets/sidebar";
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
 
 const RootLayout: FC = () => {
   return (
-    <div className="flex min-h-screen flex-col">
-      <header>header</header>
-      <main className="flex flex-1">
+    <Stack
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+      }}
+    >
+      <Header />
+
+      <Sidebar />
+
+      <Main>
         <Outlet />
-      </main>
-      <footer>footer</footer>
-    </div>
+      </Main>
+
+      <footer>
+        <Container>
+          <Box
+            sx={{
+              display: "flex",
+            }}
+          >
+            footer
+          </Box>
+        </Container>
+      </footer>
+    </Stack>
   );
 };
 

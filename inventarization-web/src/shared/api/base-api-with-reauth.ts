@@ -6,10 +6,11 @@ import {
   fetchBaseQuery,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query";
+import { BASE_URL } from "@shared/constants/enviroments";
 import { AppState } from "@shared/types/redux";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: import.meta.env.VITE_BASE_URL,
+  baseUrl: BASE_URL,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const { accessToken } = (getState() as AppState).auth;

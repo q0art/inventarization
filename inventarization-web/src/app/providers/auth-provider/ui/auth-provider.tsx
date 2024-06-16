@@ -1,4 +1,5 @@
-import { useAuth } from "@shared/hooks/use-auth.ts";
+import { getRouteSignIn } from "@shared/constants/routes";
+import { useAuth } from "@shared/hooks/use-redux";
 import { FC, ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 
@@ -9,7 +10,7 @@ interface Props {
 export const AuthProvider: FC<Props> = ({ children }) => {
   const isAuth = useAuth();
 
-  if (!isAuth) return <Navigate to={"/auth/sign-in"} replace />;
+  if (!isAuth) return <Navigate to={getRouteSignIn()} replace />;
 
   return <>{children}</>;
 };

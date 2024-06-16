@@ -60,87 +60,107 @@ export const routesWithRootLayout: R = {
   [AppRoutes.EMPLOYEE]: {
     path: getRouteEmployeeById(":id"),
     element: <LazyEmployeePage />,
+    isAuth: true,
   },
   [AppRoutes.EMPLOYEES]: {
     path: getRouteEmployees(),
     element: <LazyEmployeesPage />,
+    isAuth: true,
   },
   //
   [AppRoutes.WORKSPACE]: {
     path: getRouteWorkspaceById(":id"),
     element: <LazyWorkspacePage />,
+    isAuth: true,
   },
   [AppRoutes.WORKSPACES]: {
     path: getRouteWorkspaces(),
     element: <LazyWorkspacesPage />,
+    isAuth: true,
   },
   //
   [AppRoutes.DEPARTAMENTS]: {
     path: getRouteDepartaments(),
     element: <LazyDepartamentsPage />,
+    isAuth: true,
   },
   [AppRoutes.BRANDS]: {
     path: getRouteBrand(),
     element: <LazyBrandsPage />,
+    isAuth: true,
   },
   //
   [AppRoutes.DESKTOP]: {
     path: getRouteDesktopById(":id"),
     element: <LazyDesktopPage />,
+    isAuth: true,
   },
   [AppRoutes.DESKTOPS]: {
     path: getRouteDesktops(),
     element: <LazyDesktopsPage />,
+    isAuth: true,
   },
   //
   [AppRoutes.MONITORS]: {
     path: getRouteMonitors(),
     element: <LazyMonitorsPage />,
+    isAuth: true,
   },
   [AppRoutes.MOUSES]: {
     path: getRouteMouses(),
     element: <LazyMousePage />,
+    isAuth: true,
   },
   [AppRoutes.MOUSEPADS]: {
     path: getRouteMousePads(),
     element: <LazyMousepadsPage />,
+    isAuth: true,
   },
   [AppRoutes.KEYBOARDS]: {
     path: getRouteKeyboards(),
     element: <LazyKeyboardsPage />,
+    isAuth: true,
   },
   [AppRoutes.HEADPHONES]: {
     path: getRouteHeadphones(),
     element: <LazyHeadphonesPage />,
+    isAuth: true,
   },
   //
   [AppRoutes.CPUS]: {
     path: getRouteCpus(),
     element: <LazyCpusPage />,
+    isAuth: true,
   },
   [AppRoutes.GPUS]: {
     path: getRouteGpus(),
     element: <LazyGpusPage />,
+    isAuth: true,
   },
   [AppRoutes.MOTHERBOARDS]: {
     path: getRouteMotherboards(),
     element: <LazyMotherboardsPage />,
+    isAuth: true,
   },
   [AppRoutes.RAMS]: {
     path: getRouteRams(),
     element: <LazyRamsPage />,
+    isAuth: true,
   },
   [AppRoutes.SSDS]: {
     path: getRouteSsds(),
     element: <LazySsdsPage />,
+    isAuth: true,
   },
   [AppRoutes.COOLERS]: {
     path: getRouteCoolers(),
     element: <LazyCoolersPage />,
+    isAuth: true,
   },
   [AppRoutes.CASES]: {
     path: getRouteCases(),
     element: <LazyCasesPage />,
+    isAuth: true,
   },
   //
   [AppRoutes.NOT_FOUND]: {

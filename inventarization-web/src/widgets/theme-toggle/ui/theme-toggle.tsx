@@ -1,12 +1,12 @@
-import { toggleTheme } from "@entities/theme";
+import { toggleTheme } from "@app/providers/theme-provider";
 import { DarkMode, LightMode } from "@mui/icons-material";
-import { useAppDispatch } from "@shared/hooks/use-app-dispatch";
-import { useTheme } from "@shared/hooks/use-theme";
+import { useDispatch } from "@shared/hooks/use-redux";
+import { useTheme } from "@shared/hooks/use-redux";
 import { FC, MouseEvent } from "react";
 
 export const ThemeToggle: FC = () => {
   const theme = useTheme();
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   const onClick = (e: MouseEvent<SVGSVGElement>) => {
     e.stopPropagation();

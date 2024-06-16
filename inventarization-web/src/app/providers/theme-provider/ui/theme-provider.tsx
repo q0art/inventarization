@@ -1,13 +1,14 @@
-import { toggleTheme } from "@entities/theme";
 import {
   createTheme,
   CssBaseline,
   StyledEngineProvider,
   ThemeProvider as MUIThemeProvider,
 } from "@mui/material";
-import { useAppDispatch } from "@shared/hooks/use-app-dispatch.ts";
-import { useTheme } from "@shared/hooks/use-theme.ts";
+import { useDispatch } from "@shared/hooks/use-redux";
+import { useTheme } from "@shared/hooks/use-redux";
 import { FC, ReactNode, useEffect } from "react";
+
+import { toggleTheme } from "../lib/theme-slice";
 
 interface Props {
   children?: ReactNode;
@@ -15,7 +16,7 @@ interface Props {
 
 export const ThemeProvider: FC<Props> = ({ children }) => {
   const _theme = useTheme();
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(toggleTheme(_theme));

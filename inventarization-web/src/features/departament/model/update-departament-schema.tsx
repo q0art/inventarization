@@ -1,7 +1,4 @@
-import {
-  SMALL_FIELD_MAX_LENGTH,
-  SMALL_FIELD_MIN_LENGTH,
-} from "@shared/constants/input-fields";
+import { SMALL_FIELD } from "@shared/constants/inputs";
 import { z } from "zod";
 
 export const UpdateDepartamentSchema = z.object({
@@ -10,10 +7,10 @@ export const UpdateDepartamentSchema = z.object({
     .refine((field) => field.trim().length > 0, {
       message: "departament is required",
     })
-    .refine((field) => field.trim().length >= SMALL_FIELD_MIN_LENGTH, {
-      message: `departament min length is ${SMALL_FIELD_MIN_LENGTH}`,
+    .refine((field) => field.trim().length >= SMALL_FIELD.MIN_LENGTH, {
+      message: `departament min length is ${SMALL_FIELD.MIN_LENGTH}`,
     })
-    .refine((field) => field.trim().length <= SMALL_FIELD_MAX_LENGTH, {
-      message: `departament max length is ${SMALL_FIELD_MAX_LENGTH}`,
+    .refine((field) => field.trim().length <= SMALL_FIELD.MAX_LENGTH, {
+      message: `departament max length is ${SMALL_FIELD.MAX_LENGTH}`,
     }),
 });

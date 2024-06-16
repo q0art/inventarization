@@ -1,7 +1,4 @@
-import {
-  SMALL_FIELD_MAX_LENGTH,
-  SMALL_FIELD_MIN_LENGTH,
-} from "@shared/constants/input-fields";
+import { SMALL_FIELD } from "@shared/constants/inputs";
 import { z } from "zod";
 
 export const UpdateComponentSchema = z.object({
@@ -10,11 +7,11 @@ export const UpdateComponentSchema = z.object({
     .refine((field) => field.trim().length > 0, {
       message: "model is required",
     })
-    .refine((field) => field.trim().length >= SMALL_FIELD_MIN_LENGTH, {
-      message: `model min length is ${SMALL_FIELD_MIN_LENGTH}`,
+    .refine((field) => field.trim().length >= SMALL_FIELD.MIN_LENGTH, {
+      message: `model min length is ${SMALL_FIELD.MIN_LENGTH}`,
     })
-    .refine((field) => field.trim().length <= SMALL_FIELD_MAX_LENGTH, {
-      message: `model max length is ${SMALL_FIELD_MAX_LENGTH}`,
+    .refine((field) => field.trim().length <= SMALL_FIELD.MAX_LENGTH, {
+      message: `model max length is ${SMALL_FIELD.MAX_LENGTH}`,
     })
     .optional(),
 
@@ -23,11 +20,11 @@ export const UpdateComponentSchema = z.object({
     .refine((field) => field.trim().length > 0, {
       message: "manufacturer code is required",
     })
-    .refine((field) => field.trim().length >= SMALL_FIELD_MIN_LENGTH, {
-      message: `manufacturer code min length is ${SMALL_FIELD_MIN_LENGTH}`,
+    .refine((field) => field.trim().length >= SMALL_FIELD.MIN_LENGTH, {
+      message: `manufacturer code min length is ${SMALL_FIELD.MIN_LENGTH}`,
     })
-    .refine((field) => field.trim().length <= SMALL_FIELD_MAX_LENGTH, {
-      message: `manufacturer code max length is ${SMALL_FIELD_MAX_LENGTH}`,
+    .refine((field) => field.trim().length <= SMALL_FIELD.MAX_LENGTH, {
+      message: `manufacturer code max length is ${SMALL_FIELD.MAX_LENGTH}`,
     })
     .optional(),
 

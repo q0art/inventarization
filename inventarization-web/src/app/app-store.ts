@@ -1,6 +1,5 @@
 import { rootReducer } from "@app/root-reducer";
 import { authSlice } from "@entities/auth";
-import { themeSlice } from "@entities/theme";
 import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "@shared/api/base-api";
 import {
@@ -14,6 +13,8 @@ import {
   REHYDRATE,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+
+import { themeSlice } from "./providers/theme-provider";
 
 const persistConfig = {
   key: "root",

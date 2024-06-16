@@ -1,6 +1,6 @@
 import { baseApi } from "@shared/api/base-api";
 
-import { AccessToken, SignInDto, SignUpDto } from "./types";
+import { AccessToken, SignInDto, SignUpDto } from "../model/types";
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
