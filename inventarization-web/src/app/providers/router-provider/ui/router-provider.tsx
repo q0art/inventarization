@@ -1,10 +1,11 @@
-import { AppRoutesProps } from "@/shared/types/routes";
+import { LazyAuthLayout } from "@app/layouts/auth-layout";
+import { LazyRootLayout } from "@app/layouts/root-layot";
+import { AuthProvider } from "@app/providers/auth-provider";
+import { AppRoutesProps } from "@shared/types/routes";
 import { FC, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { AuthProvider } from "@/app/providers/auth-provider";
+
 import { routesWithAuthLayout, routesWithRootLayout } from "../lib/routes";
-import { LazyRootLayout } from "@/app/layouts/root-layot";
-import { LazyAuthLayout } from "@/app/layouts/auth-layout";
 
 export const RouterProvider: FC = () => {
   const render = (route: AppRoutesProps) => {
@@ -37,5 +38,3 @@ export const RouterProvider: FC = () => {
     </BrowserRouter>
   );
 };
-
-RouterProvider.displayName = "router-provider";

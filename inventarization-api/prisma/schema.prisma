@@ -91,8 +91,6 @@ model Workspace {
   monitorId   String?
   desktop     Desktop?   @relation(fields: [desktopId], references: [id], onDelete: Cascade)
   desktopId   String?
-  laptop      Laptop?    @relation(fields: [laptopId], references: [id], onDelete: Cascade)
-  laptopId    String?
   mouse       Mouse?     @relation(fields: [mouseId], references: [id], onDelete: Cascade)
   mouseId     String?
   mousepad    Mousepad?  @relation(fields: [mousepadId], references: [id], onDelete: Cascade)
@@ -120,7 +118,6 @@ model Brand {
   motherboards Motherboard[]
   cases        Case[]
   coolers      Cooler[]
-  laptops      Laptop[]
   monitors     Monitor[]
   mouses       Mouse[]
   mousepads    Mousepad[]
@@ -278,23 +275,6 @@ model Desktop {
   updatedAt     DateTime     @updatedAt @map("updated_at")
 
   @@map("desktops")
-}
-
-model Laptop {
-  id               String      @id @default(uuid())
-  //
-  workspaces       Workspace[]
-  //
-  brand            Brand       @relation(fields: [brandId], references: [id], onDelete: Cascade)
-  brandId          String
-  //
-  model            String      @unique
-  manufacturerCode String      @unique
-  //
-  createdAt        DateTime    @default(now()) @map("created_at")
-  updatedAt        DateTime    @updatedAt @map("updated_at")
-
-  @@map("laptops")
 }
 
 model Monitor {

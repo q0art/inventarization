@@ -1,5 +1,5 @@
-import { AppRoutes as R } from "@/shared/types/routes";
-import { MenuItem } from "@/shared/types/components";
+import { MenuItem } from "@shared/types/components";
+import { AppRoutes as R } from "@shared/types/routes";
 
 export const getRouteRoot = () => "";
 //

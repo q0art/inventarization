@@ -1,9 +1,6 @@
-import "@/app/app.css";
-
+import { AppProvider } from "@app/app-provider";
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-import { AppProvider } from "@/app/app-provider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

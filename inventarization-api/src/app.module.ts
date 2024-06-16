@@ -16,7 +16,6 @@ import { EmployeeModule } from "./employee/employee.module";
 import { GpuModule } from "./gpu/gpu.module";
 import { HeadphoneModule } from "./headphone/headphone.module";
 import { KeyboardModule } from "./keyboard/keyboard.module";
-import { LaptopModule } from "./laptop/laptop.module";
 import { MonitorModule } from "./monitor/monitor.module";
 import { MotherboardModule } from "./motherboard/motherboard.module";
 import { MouseModule } from "./mouse/mouse.module";
@@ -25,7 +24,7 @@ import { PrismaModule } from "./prisma/prisma.module";
 import { RamModule } from "./ram/ram.module";
 import { SsdModule } from "./ssd/ssd.module";
 import { UserModule } from "./user/user.module";
-// import { WorkspaceModule } from "./workspace/workspace.module";
+import { WorkspaceModule } from "./workspace/workspace.module";
 
 @Module({
   imports: [
@@ -38,7 +37,7 @@ import { UserModule } from "./user/user.module";
     AuthModule,
     DepartamentModule,
     EmployeeModule,
-    // WorkspaceModule,
+    WorkspaceModule,
     BrandModule,
     CpuModule,
     GpuModule,
@@ -48,7 +47,6 @@ import { UserModule } from "./user/user.module";
     CaseModule,
     CoolerModule,
     DesktopModule,
-    LaptopModule,
     MonitorModule,
     MouseModule,
     MousepadModule,

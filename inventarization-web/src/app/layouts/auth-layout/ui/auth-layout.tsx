@@ -9,6 +9,4 @@ const AuthLayout: FC = () => {
   );
 };
 
-AuthLayout.displayName = "auth-layout";
-
 export default AuthLayout;

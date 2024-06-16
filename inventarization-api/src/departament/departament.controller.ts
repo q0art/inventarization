@@ -18,8 +18,8 @@ export class DepartamentController {
   constructor(private readonly departamentService: DepartamentService) {}
 
   @Get("")
-  async getAllByName(@Query("name") name: string) {
-    return await this.departamentService.getAllByName(name);
+  async getAll() {
+    return await this.departamentService.getAll();
   }
 
   @Get(":id")

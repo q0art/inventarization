@@ -3,8 +3,8 @@ import {
   ComponentWithBrand,
   CreateComponentDto,
   UpdateComponentDto,
-} from "@/entities/component";
-import { baseApi } from "@/shared/api/base-api";
+} from "@entities/component";
+import { baseApi } from "@shared/api/base-api";
 
 export const monitorApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

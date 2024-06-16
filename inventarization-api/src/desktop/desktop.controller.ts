@@ -52,7 +52,7 @@ export class DesktopController {
     const { name } = dto;
     const desktopByName = await this.desktopService.getByName(name);
 
-    if (desktopById.name && desktopByName?.name === name)
+    if (desktopById.name !== name && desktopByName?.name === name)
       throw new ConflictException(`desktop already exist with name: ${name}`);
 
     return await this.desktopService.update(id, dto);

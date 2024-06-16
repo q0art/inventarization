@@ -11,60 +11,9 @@ export class DesktopService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async getAll() {
-    const desktops = await this.prismaService.desktop.findMany({
-      select: {
-        id: true,
-        name: true,
-        cpu: {
-          select: {
-            id: true,
-            model: true,
-            manufacturerCode: true,
-          },
-        },
-        gpu: {
-          select: {
-            id: true,
-            model: true,
-            manufacturerCode: true,
-          },
-        },
-        motherboard: {
-          select: {
-            id: true,
-            model: true,
-            manufacturerCode: true,
-          },
-        },
-        ram: {
-          select: {
-            id: true,
-            model: true,
-            manufacturerCode: true,
-          },
-        },
-        ssd: {
-          select: {
-            id: true,
-            model: true,
-            manufacturerCode: true,
-          },
-        },
-        cooler: {
-          select: {
-            id: true,
-            model: true,
-            manufacturerCode: true,
-          },
-        },
-        case: {
-          select: {
-            id: true,
-            model: true,
-            manufacturerCode: true,
-          },
-        },
-      },
+    const desktops: Desktop[] = await this.prismaService.desktop.findMany().catch((error) => {
+      this.logger.error(error);
+      return null;
     });
 
     return desktops;

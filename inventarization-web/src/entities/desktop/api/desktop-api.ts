@@ -1,15 +1,15 @@
-import { baseApi } from "@/shared/api/base-api";
+import { baseApi } from "@shared/api/base-api";
 
 import {
-  Desktop,
   CreateDesktopDto,
-  UpdateDesktopDto,
+  Desktop,
   DesktopWithComponents,
+  UpdateDesktopDto,
 } from "./../model/types";
 
 export const desktopApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getAllDesktops: builder.query<DesktopWithComponents[], void>({
+    getAllDesktops: builder.query<Desktop[], void>({
       query: () => ({
         method: "GET",
         url: "/desktop",

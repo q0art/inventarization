@@ -1,4 +1,4 @@
-import { Brand } from "@/entities/brand";
+import { Brand } from "@entities/brand";
 
 export interface Component {
   id: string;

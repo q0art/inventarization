@@ -1,11 +1,10 @@
-import { baseApi } from "@/shared/api/base-api.ts";
-
 import {
   Component,
   ComponentWithBrand,
   CreateComponentDto,
   UpdateComponentDto,
-} from "@/entities/component";
+} from "@entities/component";
+import { baseApi } from "@shared/api/base-api.ts";
 
 export const ramApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

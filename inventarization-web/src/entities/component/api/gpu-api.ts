@@ -3,8 +3,8 @@ import {
   ComponentWithBrand,
   CreateComponentDto,
   UpdateComponentDto,
-} from "@/entities/component";
-import { baseApi } from "@/shared/api/base-api.ts";
+} from "@entities/component";
+import { baseApi } from "@shared/api/base-api.ts";
 
 export const gpuApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

@@ -1,8 +1,4 @@
-interface Component {
-  id: string;
-  model: string;
-  manufacturerCode: string;
-}
+import { Component } from "@shared/types/global";
 
 export interface Desktop {
   id: string;

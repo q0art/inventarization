@@ -1,9 +1,8 @@
-import { z } from "zod";
-
 import {
   SMALL_FIELD_MAX_LENGTH,
   SMALL_FIELD_MIN_LENGTH,
-} from "@/shared/constants/input-fields";
+} from "@shared/constants/input-fields";
+import { z } from "zod";
 
 export const CreateBrandSchema = z.object({
   name: z

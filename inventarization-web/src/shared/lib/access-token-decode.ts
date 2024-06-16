@@ -1,12 +1,11 @@
+import { JwtPayload } from "@shared/types/global";
 import * as jwt from "jsonwebtoken";
 
-import { JWTPayload } from "@/shared/types/jwt-payload";
-
 export const accessTokenDecode = (accessToken: string) => {
-  const user = jwt.decode(accessToken) as JWTPayload;
+  const user = jwt.decode(accessToken) as JwtPayload;
 
   return {
     id: user.id,
     email: user.email,
-  } as JWTPayload;
+  } as JwtPayload;
 };

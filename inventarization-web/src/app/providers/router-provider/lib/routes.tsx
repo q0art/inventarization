@@ -1,4 +1,27 @@
-import { AppRoutes, AppRoutesProps } from "@/shared/types/routes";
+import { LazyBrandsPage } from "@pages/brands";
+import { LazyCasesPage } from "@pages/cases";
+import { LazyCoolersPage } from "@pages/coolers";
+import { LazyCpusPage } from "@pages/cpus";
+import { LazyDepartamentsPage } from "@pages/departaments";
+import { LazyDesktopPage } from "@pages/desktop";
+import { LazyDesktopsPage } from "@pages/desktops/ui/lazy-desktops-page";
+import { LazyEmployeePage } from "@pages/employee";
+import { LazyEmployeesPage } from "@pages/employees";
+import { LazyGpusPage } from "@pages/gpus";
+import { LazyHeadphonesPage } from "@pages/headphones";
+import { LazyKeyboardsPage } from "@pages/keyboards";
+import { LazyMonitorsPage } from "@pages/monitors";
+import { LazyMotherboardsPage } from "@pages/motherboards";
+import { LazyMousepadsPage } from "@pages/mousepads";
+import { LazyMousePage } from "@pages/mouses";
+import { LazyNotFoundPage } from "@pages/not-found-page";
+import { LazyRamsPage } from "@pages/rams";
+import { LazyRootPage } from "@pages/root-page";
+import { LazySignInPage } from "@pages/sign-in-page";
+import { LazySignUpPage } from "@pages/sign-up-page";
+import { LazySsdsPage } from "@pages/ssds";
+import { LazyWorkspacePage } from "@pages/workspace";
+import { LazyWorkspacesPage } from "@pages/workspaces";
 import {
   getRouteBrand,
   getRouteCases,
@@ -23,28 +46,8 @@ import {
   getRouteSsds,
   getRouteWorkspaceById,
   getRouteWorkspaces,
-} from "@/shared/constants/routes";
-
-import { LazyRootPage } from "@/pages/root-page";
-import { LazySignInPage } from "@/pages/sign-in-page";
-import { LazySignUpPage } from "@/pages/sign-up-page";
-import { LazyNotFoundPage } from "@/pages/not-found-page";
-import { LazyBrandsPage } from "@/pages/brands";
-import { LazyCasesPage } from "@/pages/cases";
-import { LazyCoolersPage } from "@/pages/coolers";
-import { LazySsdsPage } from "@/pages/ssds";
-import { LazyRamsPage } from "@/pages/rams";
-import { LazyMotherboardsPage } from "@/pages/motherboards";
-import { LazyGpusPage } from "@/pages/gpus";
-import { LazyCpusPage } from "@/pages/cpus";
-import { LazyHeadphonesPage } from "@/pages/headphones";
-import { LazyKeyboardsPage } from "@/pages/keyboards";
-import { LazyMousepadsPage } from "@/pages/mousepads";
-import { LazyMousePage } from "@/pages/mouses";
-import { LazyMonitorsPage } from "@/pages/monitors";
-import { LazyDepartamentsPage } from "@/pages/departaments";
-import { LazyDesktopsPage } from "@/pages/desktops/ui/lazy-desktops-page";
-import { LazyDesktopPage } from "@/pages/desktop";
+} from "@shared/constants/routes";
+import { AppRoutes, AppRoutesProps } from "@shared/types/routes";
 
 type R = Partial<Record<AppRoutes, AppRoutesProps>>;
 
@@ -56,20 +59,20 @@ export const routesWithRootLayout: R = {
   //
   [AppRoutes.EMPLOYEE]: {
     path: getRouteEmployeeById(":id"),
-    element: null,
+    element: <LazyEmployeePage />,
   },
   [AppRoutes.EMPLOYEES]: {
     path: getRouteEmployees(),
-    element: null,
+    element: <LazyEmployeesPage />,
   },
   //
   [AppRoutes.WORKSPACE]: {
     path: getRouteWorkspaceById(":id"),
-    element: null,
+    element: <LazyWorkspacePage />,
   },
   [AppRoutes.WORKSPACES]: {
     path: getRouteWorkspaces(),
-    element: null,
+    element: <LazyWorkspacesPage />,
   },
   //
   [AppRoutes.DEPARTAMENTS]: {

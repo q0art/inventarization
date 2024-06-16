@@ -1,13 +1,12 @@
+import { AccessToken } from "@entities/auth";
+import { removeAuth, setAuth } from "@entities/auth";
 import {
   BaseQueryFn,
   FetchArgs,
   fetchBaseQuery,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query";
-
-import { AccessToken } from "@/entities/auth";
-import { removeAuth, setAuth } from "@/entities/auth";
-import { AppState } from "@/shared/types/redux";
+import { AppState } from "@shared/types/redux";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_BASE_URL,

@@ -15,4 +15,5 @@ export const baseApiTags = [
   "Monitor",
   "Laptop",
   "Desktop",
+  "Workspace",
 ];

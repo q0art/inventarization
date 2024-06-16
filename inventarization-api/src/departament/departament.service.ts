@@ -9,16 +9,9 @@ export class DepartamentService {
 
   constructor(private readonly prismaService: PrismaService) {}
 
-  async getAllByName(name: string) {
+  async getAll() {
     const departaments: Departament[] = await this.prismaService.departament
-      .findMany({
-        where: {
-          name: {
-            contains: name,
-            mode: "insensitive",
-          },
-        },
-      })
+      .findMany()
       .catch((error) => {
         this.logger.error(error);
         return [];

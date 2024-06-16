@@ -1,6 +1,6 @@
-import { JWTPayload } from "@/shared/types/jwt-payload.ts";
+import { JwtPayload } from "@shared/types/global";
 
 export type AuthState = {
-  user: JWTPayload | null;
+  user: JwtPayload | null;
   accessToken: string | null;
 };

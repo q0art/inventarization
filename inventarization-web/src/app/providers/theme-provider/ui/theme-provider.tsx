@@ -1,32 +1,38 @@
+import { toggleTheme } from "@entities/theme";
+import {
+  createTheme,
+  CssBaseline,
+  StyledEngineProvider,
+  ThemeProvider as MUIThemeProvider,
+} from "@mui/material";
+import { useAppDispatch } from "@shared/hooks/use-app-dispatch.ts";
+import { useTheme } from "@shared/hooks/use-theme.ts";
 import { FC, ReactNode, useEffect } from "react";
 
-import { Theme, toggleTheme } from "@/entities/theme";
-import { useAppDispatch } from "@/shared/hooks/use-app-dispatch.ts";
-import { useTheme } from "@/shared/hooks/use-theme.ts";
-
 interface Props {
-  theme?: Theme;
   children?: ReactNode;
 }
 
-const ThemeProvider: FC<Props> = ({ theme, children }) => {
+export const ThemeProvider: FC<Props> = ({ children }) => {
   const _theme = useTheme();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (theme && theme !== _theme) {
-      dispatch(toggleTheme(theme));
-      return;
-    }
+    dispatch(toggleTheme(_theme));
+  }, [_theme, dispatch]);
 
-    if (_theme === "dark")
-      window.document.documentElement.classList.add("dark");
-    else window.document.documentElement.classList.remove("dark");
-  }, [theme, _theme]);
+  const theme = createTheme({
+    palette: {
+      mode: _theme,
+    },
+  });
 
-  return <>{children}</>;
+  return (
+    <StyledEngineProvider injectFirst>
+      <MUIThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </MUIThemeProvider>
+    </StyledEngineProvider>
+  );
 };
-
-ThemeProvider.displayName = "theme-provider";
-
-export { ThemeProvider };

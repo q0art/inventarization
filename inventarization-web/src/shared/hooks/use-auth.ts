@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/shared/hooks/use-app-selector";
+import { useAppSelector } from "@shared/hooks/use-app-selector";
 
 export const useAuth = () =>
   useAppSelector((state) => {

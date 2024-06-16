@@ -1,4 +1,8 @@
+import { rootReducer } from "@app/root-reducer";
+import { authSlice } from "@entities/auth";
+import { themeSlice } from "@entities/theme";
 import { configureStore } from "@reduxjs/toolkit";
+import { baseApi } from "@shared/api/base-api";
 import {
   FLUSH,
   PAUSE,
@@ -11,21 +15,14 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import { appReducer } from "@/app/app-reducer";
-import { authSlice } from "@/entities/auth";
-import { themeSlice } from "@/entities/theme";
-import { baseApi } from "@/shared/api/base-api";
-
 const persistConfig = {
   key: "root",
   storage,
   whitelist: [authSlice.name, themeSlice.name],
 };
 
-const persistedReducer = persistReducer(persistConfig, appReducer);
-
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: persistReducer(persistConfig, rootReducer),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
